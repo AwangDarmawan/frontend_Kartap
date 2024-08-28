@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.modal-form-wrapper {
+  height: 100vh;
+  position: absolute;
+  left: 15;
+  max-width: 100%;
+}
+.modal-content {
+  border-radius: 30px;
+}
+.btn-close {
+  color: #6148ff !important;
+}
+.modal-title {
+  font-size: 1.25rem;
+  color: #6148ff;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+.modal-header-admin {
+  height: 7rem;
+  border: none;
+}
+.modal-body-admin {
+  margin: 0 7rem;
+}
+.form-modal-admin {
+  border-radius: 15px;
+  height: 3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #8a8a8a;
+  border: 1px solid #d0d0d0;
+  font-family: "Poppins", sans-serif;
+  max-width: 100%;
+}
+.form-modal-admin-materi {
+  border-radius: 15px;
+  height: 7.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #8a8a8a;
+  border: 1px solid #d0d0d0;
+  font-family: "Poppins", sans-serif;
+  max-width: 100%;
+}
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+.modal-footer-admin {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-upload {
+  background-color: #f00;
+  border: #f00;
+  border-radius: 30px;
+  width: 18.625rem;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.btn-upload:hover {
+  background-color: #f00;
+  border: #f00;
+  border-radius: 30px;
+  width: 18.625rem;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.btn-simpan {
+  background-color: #6148ff;
+  border: #6148ff;
+  border-radius: 30px;
+  width: 14.5rem;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.btn-simpan:hover {
+  background-color: #6148ff;
+  border: #6148ff;
+  border-radius: 30px;
+  width: 14.5rem;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .modal-body-admin {
+    margin: 0 3rem;
+  }
+  .btn-simpan,
+  .btn-upload {
+    width: 70%;
+  }
+}

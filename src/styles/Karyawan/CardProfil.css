@@ -1,0 +1,16 @@
+.card-akun {
+    border: 1px solid #6148ff;
+    margin-top: 4.5rem;
+    width: 80%;
+    height: auto;
+    left: 10%;
+  }
+  .card-header {
+    background-color: #6148ff;
+    color: white;
+    font-weight: 700;
+    height: 4rem;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+  }
+  

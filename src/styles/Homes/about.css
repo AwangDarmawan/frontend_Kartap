@@ -1,0 +1,33 @@
+/* aboutStyles.css */
+.sub-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .display-5 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  
+  .text-secondary {
+    color: #6c757d;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .border-primary {
+    border-color: #007bff;
+  }
+  
+  .wow {
+    /* Add your wow animation styles here if needed */
+  }
+  

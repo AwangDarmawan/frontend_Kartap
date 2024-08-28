@@ -1,0 +1,45 @@
+.icon-admin {
+    height: 60px;
+    width: 60px;
+  }
+  
+  .content-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .writing {
+    line-height: 6px;
+    margin-left: 15px;
+  }
+  
+  .number {
+    color: #ffffff;
+    font-weight: 400;
+  }
+  
+  .title {
+    color: #ffffff;
+    font-weight: 700;
+  }
+  .card-users {
+    background: #489cff;
+  }
+  
+  .card-active {
+    background: #73ca5c;
+  }
+  
+  .card-premium {
+    background: #6148ff;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card-dashboard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+  

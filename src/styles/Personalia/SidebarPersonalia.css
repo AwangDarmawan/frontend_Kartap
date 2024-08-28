@@ -1,0 +1,48 @@
+
+  .navbar-brand {
+    text-align: center;
+    margin-bottom: 20px;
+    background: transparent;
+  }
+  .image{
+    width: 100%; 
+    height: auto;
+  }
+  
+  .navbar-brand h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+  }
+  
+  .sidebar-admin-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .sidebar-admin-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar-admin-item:hover {
+    background-color: #495057;
+  }
+  
+  .item-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .item {
+    font-size: 1rem;
+    padding: 0 !important;
+    margin: 0;
+  }
+  

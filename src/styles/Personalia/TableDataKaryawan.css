@@ -1,0 +1,175 @@
+.table {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+.table th,
+.table td {
+  padding: 0.75rem; /* Jarak di dalam sel */
+  border: 1px solid #dee2e6; /* Garis batas abu-abu terang di sekitar sel */
+}
+.table td {
+  background-color: #fff; /* Warna latar belakang untuk sel data */
+}
+
+.table thead th {
+  text-align: center; /* Rata tengah untuk header tabel */
+}
+
+.table tbody td {
+  text-align: center; /* Rata tengah untuk sel data */
+}
+
+/* Garis batas per baris */
+.table tbody tr {
+  border-bottom: 2px solid #dee2e6; /* Garis batas abu-abu terang di bawah setiap baris */
+}
+
+.table tbody tr:last-child {
+  border-bottom: none; /* Menghilangkan garis batas di bawah baris terakhir */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.atribut {
+  display: flex;
+  justify-content: end;
+}
+.btn-tambah {
+  width: 7.8rem;
+  height: 2rem;
+  border-radius: 16px;
+  padding: 5px, 10px, 5px, 10px;
+  border: 1px solid #6148ff;
+  color: #6148ff;
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.btn-tambah:hover {
+  width: 7.8rem;
+  height: 2rem;
+  border-radius: 16px;
+  padding: 5px, 10px, 5px, 10px;
+  border: 1px solid #6148ff;
+  background: #6148ff;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.btn-create{
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    border-radius: 10px;
+    background-color: #6148ff !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    justify-content: center;
+    transition: 0.2s ease-in;
+}
+.btn-delete {
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: red !important;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  justify-content: center;
+  transition: 0.2s ease-in;
+}
+
+/* Table */
+
+.bg-table {
+  background: #489cff;
+}
+.text-nama {
+  font-weight: 700 !important;
+  line-height: 20px;
+}
+.header-table {
+  font-size: 14px;
+  text-align: start;
+}
+.isi-table {
+  font-size: 11px;
+}
+.text-kategori {
+  font-weight: 700 !important;
+  line-height: 20px;
+}
+/* 
+.text-class {
+  font-weight: 700 !important;
+  line-height: 20px;
+}
+
+.text-lunas {
+  font-size: 12px;
+  font-weight: 700 !important;
+  /* color: #73ca5c; */
+/* } */
+
+.text-belum {
+  font-size: 12px ;
+  font-weight: 700 !important;
+  color: #ff0000;
+}
+
+.text-payment {
+  font-weight: 700 !important;
+  line-height: 20px;
+}
+
+.text-date {
+  font-weight: 600 !important;
+  line-height: 20px;
+} */
+
+.empty {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 20px;
+}
+.dropdown{
+  font-size: 10px; 
+  text-align: center;
+  font-family: Montserrat;
+}
+
+@media (max-width: 768px) {
+  .atribut {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-form-admin {
+    max-width: 130px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7px;
+  }
+}

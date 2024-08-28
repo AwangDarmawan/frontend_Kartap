@@ -1,0 +1,72 @@
+/* Team Section Styles */
+.team {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .member {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .member:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+  }
+  .member-img {
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+  }
+  
+  .member-iamg {
+    max-width: 20%; /* Ensure image does not exceed column width */
+    height: 30% 
+  }
+  
+  .member-info {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .member-infoh4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .member-infospan {
+    display: block;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  
+  .member-infop {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .social {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .sociala {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sociala :hover {
+    background-color: #007bff;
+  }
+  

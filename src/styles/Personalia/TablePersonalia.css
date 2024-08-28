@@ -1,0 +1,124 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  .atribut {
+    display: flex;
+    justify-content: end;
+  }
+  
+  .btn-filter {
+    padding: 0px 4px 0px 4px;
+    border: 1px solid #6148ff;
+    border-radius: 16px;
+    width: 91px;
+    height: 32px;
+    color: #6148ff;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 15px;
+  }
+  
+  .btn-filter:hover {
+    background: #6148ff;
+    color: #ffffff;
+  }
+  
+  .btn-search {
+    border: none;
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    color: #6148ff;
+    font-size: 22px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .btn-search:hover {
+    color: #489cff;
+  }
+  
+  .search-form-admin {
+    border-radius: 1rem;
+    border: 2px solid #6148ff;
+    color: #8a8a8a;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    max-width: 150px;
+    height: 32px;
+  }
+  
+  /* Table */
+  
+  .bg-table {
+    background: #489cff;
+  }
+  
+  .header-table {
+    font-size: 14px;
+    text-align: start;
+  }
+  .isi-table {
+    font-size: 11px;
+  }
+  .text-kategori {
+    font-weight: 550;
+    line-height: 20px;
+  }
+  
+  .text-class {
+    font-weight: 700;
+    line-height: 20px;
+  }
+  
+  .text-lunas {
+    font-size: 12px;
+    font-weight: 700;
+    /* color: #73ca5c; */
+  }
+  
+  .text-belum {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff0000;
+  }
+  
+  .text-payment {
+    font-weight: 700;
+    line-height: 20px;
+  }
+  
+  .text-date {
+    font-weight: 600;
+    line-height: 20px;
+  }
+  
+  .empty {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .atribut {
+      display: flex;
+      flex-direction: column;
+    }
+    .search-form-admin {
+      max-width: 130px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 7px;
+    }
+  }
+  
