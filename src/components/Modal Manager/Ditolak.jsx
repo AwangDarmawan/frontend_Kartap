@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
 
-const ditolak = (props) => {
+const Ditolak = (props) => {
   return (
     <Modal
       {...props}
@@ -18,7 +18,7 @@ const ditolak = (props) => {
         className="modal-header-admin flex-column-reverse"
       >
         <Modal.Title id="contained-modal-title-vcenter" className="text-center">
-          di tolak 
+          Tambah Karyawan
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
@@ -27,7 +27,7 @@ const ditolak = (props) => {
             <Form.Label>Keterangan</Form.Label>
             <Form.Control
               type="text"
-              placeholder="masukan keterangan"
+              placeholder="Masukan keterangan"
               autoFocus
               className="form-modal-admin"
             />
@@ -45,5 +45,6 @@ const ditolak = (props) => {
   );
 };
 
-export default ditolak;
+export default Ditolak;
+
 

@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
 
-const disetujui = (props) => {
+const Disetujui = (props) => {
   return (
     <Modal
       {...props}
@@ -36,5 +36,5 @@ const disetujui = (props) => {
   );
 };
 
-export default disetujui;
+export default Disetujui;
 

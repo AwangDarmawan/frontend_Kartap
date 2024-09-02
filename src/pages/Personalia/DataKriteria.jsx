@@ -1,7 +1,7 @@
-import NavPersonalia from "./NavPersonalia";
-import SidebarPersonalia from "./SidebarPersonalia";
-import TableKriteria1 from "./TableKriteria1";
-import TableKriteria2 from "./TableKriteria2";
+import NavPersonalia from "../../components/Personalia/NavPersonalia";
+import SidebarPersonalia from "../../components/Personalia/SidebarPersonalia";
+import TableKriteria1 from "../../components/Personalia/TableKriteria1";
+import TableKriteria2 from "../../components/Personalia/TableKriteria2";
 import "../../styles/Personalia/Personalia.css"
 
 const DataKriteria = () => {

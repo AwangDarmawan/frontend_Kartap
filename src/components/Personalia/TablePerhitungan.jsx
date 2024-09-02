@@ -3,8 +3,8 @@ import { useState } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 
 import addBtn from "../../assets/gala_add.svg";
-import TambahDataPerhitungan from "../../components/Modal/TambahDataPerhitungan";
-import UbahDataPerhitungan from "../../components/Modal/UbahDataPerhitungan";
+import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
+import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
 
 const TablePerhitungan = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);

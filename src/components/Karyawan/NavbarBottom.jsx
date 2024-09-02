@@ -18,7 +18,7 @@ const NavbarBottom = () => {
         </Link>
       </div>
       <div className="menu">
-        <Link to={"/TableKaryawan"} className="text-link">
+        <Link to={"/DataTableKaryawan"} className="text-link">
         <FaList className=" list-bottom"  />
           Table
         </Link>

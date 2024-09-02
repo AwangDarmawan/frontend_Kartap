@@ -1,6 +1,6 @@
-import NavManager from "./NavManager";
-import SidebarManager from "./SidebarManager";
-import TableHasil from "./TableHasil";
+import NavManager from "../../components/Manager/NavManager";
+import SidebarManager from "../../components/Manager/SidebarManager";
+import TableHasil from "../../components/Manager/TableHasil";
 
 import "../../styles/Personalia/Personalia.css"
 

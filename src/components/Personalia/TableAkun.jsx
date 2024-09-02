@@ -3,8 +3,8 @@ import { useState } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 
 import addBtn from "../../assets/gala_add.svg";
-import TambahDataKaryawan from "../../components/Modal/TambahDataKaryawan";
-import UbahDataKaryawan from "../../components/Modal/UbahDataKaryawan";
+import TambahAkun from "../Modal Personalia/TambahAkun";
+import UbahAkun from "../Modal Personalia/UbahAkun";
 
 const TableAkun = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
@@ -57,11 +57,11 @@ const TableAkun = () => {
           </table>
         </div>
       </div>
-      <UbahDataKaryawan
+      <UbahAkun
         show={modalShowUbah}
         onHide={() => setModalShowUbah(false)}
       />
-      <TambahDataKaryawan
+      <TambahAkun
         show={modalShowTambah}
         onHide={() => setModalShowTambah(false)}
       />

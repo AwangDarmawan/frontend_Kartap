@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import btnUser from "../../assets/fi_user.svg";
 import {FaList,FaSignOutAlt } from "react-icons/fa";
+import btnIpl from "../../assets/ipll.png";
 
 
 const Nav = () => {
@@ -12,7 +13,7 @@ const Nav = () => {
   const getButtonText = () => {
     if (location.pathname === "/Profil") {
       return "Profil";
-    } else if (location.pathname === "/TableKaryawan") {
+    } else if (location.pathname === "/DataTableKaryawan") {
       return "Informasi Pengangkatan";
     }  else if (location.pathname === "/") {
     return "Logout";
@@ -26,14 +27,17 @@ const Nav = () => {
   return (
     <>
       <nav className="navbar-wrapper">
-        <Link to={"/"} className="text-decoration-none">
-          <div className="navbar-brand"></div>
+        <Link to={"/Home/Karyawan"} className="text-decoration-none">
+          <div className="navbar-brand">
+          <img src={btnIpl} alt="" className="nav-img"/>
+          <h5 className="title-brand">INDONESIA PROJEK LOGISTIK</h5>
+          </div>
         </Link>
         <div className="button-menu d-flex align-items-center">
           <Dropdown>
           </Dropdown>
-          <Link to={"/TableKaryawan"} className="text-decoration-none">
-            {location.pathname === "/TableKaryawan" ? (
+          <Link to={"/DataTableKaryawan"} className="text-decoration-none">
+            {location.pathname === "/DataTableKaryawan" ? (
               <button className="btn-menu-on">
                 <FaList className="item-icon list"  />
                 <div className="mx-2">

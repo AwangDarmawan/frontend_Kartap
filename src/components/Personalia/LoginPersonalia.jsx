@@ -58,8 +58,6 @@ const LoginPersonalia = () => {
                             </div>
                             <button className="btn-login-admin" type="submit">Masuk</button>
                         </form>
-                          
-                           
                     </div>
                 </div>
             </div>

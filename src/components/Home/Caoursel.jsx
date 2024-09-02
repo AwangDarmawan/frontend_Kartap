@@ -24,7 +24,7 @@ const Caoursel = () => {
             </p>
             <a
               className="btn btn-primary border-secondary rounded-pill carousel-button text-white"
-              href="/TableKaryawan"
+              href="/DataTableKaryawan"
             >
               Informasi Pengangkatan
             </a>

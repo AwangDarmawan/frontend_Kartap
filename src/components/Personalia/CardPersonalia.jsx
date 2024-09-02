@@ -1,5 +1,4 @@
 import "../../styles/Personalia/CardPersonalia.css";
-
 import fiAdmin from "../../assets/icon-card-admin.svg";
 
 const CardPersonalia = () => {

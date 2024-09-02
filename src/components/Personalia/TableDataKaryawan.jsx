@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import "../../styles/Personalia/TableDataKaryawan.css";
-
 import addBtn from "../../assets/gala_add.svg";
-import TambahDataKaryawan from "../../components/Modal/TambahDataKaryawan";
-import UbahDataKaryawan from "../../components/Modal/UbahDataKaryawan";
+import TambahDataKaryawan from "../Modal Personalia/TambahDataKaryawan";
+import UbahDataKaryawan from "../Modal Personalia/UbahDataKaryawan";
 
 const TableDataKaryawan = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
@@ -34,6 +33,7 @@ const TableDataKaryawan = () => {
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Posisi</th>
+                <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
@@ -43,6 +43,7 @@ const TableDataKaryawan = () => {
                 <td className="text-kategori">Alya</td>
                 <td className="text-nama">Wanita</td>
                 <td className="text-nama">Staff Pemasaran</td>
+                <td className="text-nama">Karyawan Kontrak</td>
 
                 <td className="aksi-btn ">
                   <div className="btn-wrapper d-flex gap-2">

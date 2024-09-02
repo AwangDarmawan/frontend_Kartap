@@ -86,7 +86,6 @@
     gap: 4px;
     padding: 12px 24px;
     margin-top: 24px;
-  
     color: var(--neutral-01, #fff);
     text-align: center;
     font-family: "Poppins", sans-serif;
@@ -99,6 +98,15 @@
   
   .btn-login-admin:hover {
     filter: brightness(150%);
+  }
+  .personalia-img{
+    width:130%;
+  }
+  .navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .title-brand{
     font-size:70%

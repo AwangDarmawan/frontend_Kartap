@@ -1,8 +1,8 @@
 import "../../styles/Personalia/TableDataKaryawan.css";
 // import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import React from "react";
-import Disetujui from "./disetujui";
-import Ditolak from "./ditolak"
+import Disetujui from "../Modal Manager/Disetujui";
+import Ditolak from "../Modal Manager/Ditolak"
 import { useState } from "react";
 const TableHasil = () => {
   const [modaldisetujui, setModalDisetujui] = useState(false);

@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
 
-const TambahKriteria1 = (props) => {
+const TambahAkun = (props) => {
   return (
     <Modal
       {...props}
@@ -18,7 +18,7 @@ const TambahKriteria1 = (props) => {
         className="modal-header-admin flex-column-reverse"
       >
         <Modal.Title id="contained-modal-title-vcenter" className="text-center">
-          Tambah Kriteria
+          Tambah Akun
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
@@ -33,41 +33,24 @@ const TambahKriteria1 = (props) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="namaKaryawan">
-            <Form.Label>Nama Kriteria</Form.Label>
+            <Form.Label>Nama</Form.Label>
             <Form.Control
               type="text"
-              placeholder="kinerja"
+              placeholder="Alya"
               autoFocus
               className="form-modal-admin"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="jenisKelamin">
-            <Form.Label>Bobot Kriteria</Form.Label>
+          <Form.Group className="mb-3" controlId="namaKaryawan">
+            <Form.Label>Password</Form.Label>
             <Form.Control
               type="text"
-              placeholder="0.2"
+              placeholder="Password"
               autoFocus
               className="form-modal-admin"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="posisi">
-            <Form.Label>Nama Subkriteria</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Mencapai target"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="jenisKelamin">
-            <Form.Label>Bobot Subkriteria</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="1"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
+          
           <Button className="btn-upload" variant="secondary" onClick={props.onHide}>
             Batal
           </Button>
@@ -81,5 +64,5 @@ const TambahKriteria1 = (props) => {
   );
 };
 
-export default TambahKriteria1;
+export default TambahAkun;
 

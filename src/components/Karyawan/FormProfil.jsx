@@ -3,7 +3,6 @@
 import "../../styles/Karyawan/FormProfil.css";
 
 const FormProfil = () => {
-  
   return (
     <>
       <div className="input-profile ">
@@ -34,8 +33,16 @@ const FormProfil = () => {
             disabled 
           />
         </form>
+        <form className="mt-1">
+          <label className="text-label">Status</label>
+          <input
+            type="number"
+            className="form-control"
+            placeholder=" Karyawan Kontrak"
+            disabled 
+          />
+        </form>
       </div>
-      
     </>
   );
 };

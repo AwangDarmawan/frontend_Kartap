@@ -4,14 +4,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoginKaryawan from "./components/Karyawan/LoginKaryawan";
 import LoginPersonalia from "./components/Personalia/LoginPersonalia";
 import LoginManager from "./components/Manager/LoginManager";
-import HomeKaryawan from "./components/Home/HomeKaryawan";
-import Profil from "./components/Karyawan/Profil";
-import DataKaryawan from "./components/Personalia/DataKaryawan";
-import TableKaryawan from "./components/Karyawan/CardTableKaryawan"
-import DataKriteria from "./components/Personalia/DataKriteria";
-import DataPerhitungan from "./components/Personalia/DataPerhitungan";
-import DataAkun from "./components/Personalia/DataAkun";
-import DataHasil from "./components/Manager/DataHasilKaryawan";
+import HomeKaryawan from "./pages/Karyawan/HomeKaryawan";
+import Profil from "./pages/Karyawan/Profil";
+import DataKaryawan from "./pages/Personalia/DataKaryawan";
+import DataTableKaryawan from "./pages/Karyawan/DataTableKaryawan"
+import DataKriteria from "./pages/Personalia/DataKriteria";
+import DataPerhitungan from "./pages/Personalia/DataPerhitungan";
+import DataAkun from "./pages/Personalia/DataAkun";
+import DataHasil from "./pages/Manager/DataHasilKaryawan";
 function App() {
 
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<LoginKaryawan />} />
           <Route path="/Profil" element={<Profil/>} />
           <Route path="/Home/Karyawan" element={<HomeKaryawan/>}/>
-          <Route path="/TableKaryawan" element={<TableKaryawan/>} />
+          <Route path="/DataTableKaryawan" element={<DataTableKaryawan/>} />
            {/* Personalia */}
           <Route path="/Personalia" element={<LoginPersonalia/>}/>
           <Route path="/Data/Karyawan" element={<DataKaryawan/>} />

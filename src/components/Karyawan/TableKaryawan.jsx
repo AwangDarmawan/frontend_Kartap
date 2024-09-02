@@ -33,7 +33,6 @@ const TableKaryawan = () => {
               <th scope="col">Pengalaman Kerja</th>
               <th scope="col">Pendidikan</th>
               <th scope="col">Total</th>
-              <th scope="col">peringkat</th>
               <th scope="col">status</th>
               <th scope="col">keterangan</th>
             </tr>
@@ -51,7 +50,6 @@ const TableKaryawan = () => {
               <td className="text-payment">Fresh garduate(0.5)</td>
               <td className="text-payment">S1(1)</td>
               <td className="text-payment">0.9</td>
-              <td className="text-payment">1</td>
               <td className="text-belum">Tidak</td>
               <td className="text-belum">Tidak memenuhi nilai</td>
             </tr>

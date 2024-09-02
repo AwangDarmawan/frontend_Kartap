@@ -69,4 +69,8 @@
   .sociala :hover {
     background-color: #007bff;
   }
-  
+  @media screen and (max-width: 1070px) {
+    .social {
+      display:none 
+    }
+ }

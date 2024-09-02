@@ -1,14 +1,55 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 
 import "../../styles/Personalia/TableDataKaryawan.css";
 
 import addBtn from "../../assets/gala_add.svg";
-import TambahKriteria1 from "../Modal/TambahKriteria1";
-import UbahKriteria1 from "../Modal/UbahKriteria1";
+import TambahKriteria1 from "../Modal Personalia/TambahKriteria1";
+import UbahKriteria1 from "../Modal Personalia/UbahKriteria1";
+import HapusKriteria1 from "../Modal Personalia/HapusKriteria1";
+import { getallKriteria } from "../../services/apipersonalia";
 
 const TableKriteria1 = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
+  const [modalShowHapus, setModalShowHapus] = useState(false);
+  const [kriteria, setKriteria] = useState([]);
+  const [selectedKriteriaId, setSelectedKriteriaId] = useState(null);
+ 
+
+  const fetchKriteria = async () => {
+    try {
+      const result = await getallKriteria();
+      setKriteria(result.data);
+    } catch (error) {
+      console.error("Error fetching kriteria:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchKriteria();
+  }, []);
+
+
+
+  const handleUbahClick = (id) => {
+    setSelectedKriteriaId(id);
+    setModalShowUbah(true);
+  };
+
+  const handleTambahClose = () => {
+    setModalShowTambah(false);
+    fetchKriteria(); 
+  };
+
+  const handleUbahClose = () => {
+    setModalShowUbah(false);
+    fetchKriteria(); 
+  };
+  const handleHapusClick = (id) => {
+    setSelectedKriteriaId(id);
+    setModalShowHapus(true);
+  };
   return (
     <>
       <div>
@@ -38,158 +79,59 @@ const TableKriteria1 = () => {
               </tr>
             </thead>
             <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K1</th>
-                <td className="text-kategori">Kinerja</td>
-                <td className="text-nama">20%</td>
-                <td className="text-nama">0.20</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K2</th>
-                <td className="text-kategori">Lama Bekerja</td>
-                <td className="text-nama">20%</td>
-                <td className="text-nama">0.20</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K2</th>
-                <td className="text-kategori">Kehadiran</td>
-                <td className="text-nama">20%</td>
-                <td className="text-nama">0.20</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-             <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K1</th>
-                <td className="text-kategori">Kinerja</td>
-                <td className="text-nama">20%</td>
-                <td className="text-nama">0.20</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K4</th>
-                <td className="text-kategori">Usia</td>
-                <td className="text-nama">15%</td>
-                <td className="text-nama">0.15</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K5</th>
-                <td className="text-kategori">Pengalaman Kerja</td>
-                <td className="text-nama">15%</td>
-                <td className="text-nama">0.15</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">K6</th>
-                <td className="text-kategori">Pendidikan</td>
-                <td className="text-nama">10%</td>
-                <td className="text-nama">0.10</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tbody className="isi-table">
-              <tr>
-              <td className="text-nama" colSpan="2" >Total</td>
-                <td className="text-nama" >100%</td>
-                <td className="text-nama">1</td>
-              </tr>
+              {kriteria.map(item => (
+                <tr key={item.id}>
+                  <th scope="row text-kode">K{item.id}</th>
+                  <td className="text-kategori">{item.nama_kriteria}</td>
+                  <td className="text-nama">{item.bobot_presentase}%</td>
+                  <td className="text-nama">{item.bobot_kriteria}</td>
+                  <td className="aksi-btn">
+                    <div className="btn-wrapper d-flex gap-2">
+                      <button
+                        className="btn btn-create"
+                        onClick={() => handleUbahClick(item.id)}
+                      >
+                        Ubah
+                      </button>
+                      <button
+                         className="btn btn-delete"
+                        onClick={() => handleHapusClick(item.id)}
+                          >
+                             Hapus
+                        </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
       <UbahKriteria1
         show={modalShowUbah}
-        onHide={() => setModalShowUbah(false)}
+        onHide={handleUbahClose} 
+        id={selectedKriteriaId}
       />
       <TambahKriteria1
         show={modalShowTambah}
-        onHide={() => setModalShowTambah(false)}
+        onHide={handleTambahClose} 
       />
+       
+        <HapusKriteria1
+        show={modalShowHapus}
+        onHide={() => setModalShowHapus(false)}
+        id={selectedKriteriaId}
+        fetchKriteria={fetchKriteria} 
+        />
+    
+
+
     </>
   );
 };
 
 export default TableKriteria1;
+
+
+
+
