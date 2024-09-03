@@ -1,10 +1,56 @@
-
+import React, { useState, useEffect } from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
+import { fetchKaryawanById, updateKaryawan } from "../../services/apipersonalia";
+import { toast } from "react-toastify";
 
 const UbahDataKaryawan = (props) => {
+  const [dataKaryawan, setDataKaryawan] = useState({
+    id: '',
+    nip: '',
+    nama: '',
+    jenis_kelamin: true, 
+    posisi: ''
+  });
+  useEffect(() => {
+    if (props.id) {
+      fetchKaryawanById(props.id)
+        .then(data => {
+          if (data.status === "OK") {
+            setDataKaryawan(data.data);
+          }
+        })
+        .catch(error => {
+          console.error("There was an error fetching the data!", error);
+        });
+    }
+  }, [props.id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataKaryawan(prevState => ({
+      ...prevState,
+      [name]: name === 'jenis_kelamin' ? value === 'Pria' : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateKaryawan(dataKaryawan.id, dataKaryawan)
+      .then(response => {
+        if (response.status === "OK") {
+          toast.success(response.message);
+          props.onHide();  
+        }
+      })
+      .catch(error => {
+        console.error("There was an error updating the data!", error);
+        toast.error(error.response.data.message);
+      });
+  };
+
   return (
     <Modal
       {...props}
@@ -22,41 +68,63 @@ const UbahDataKaryawan = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
-        <Form>
-          <Form.Group className="mb-3" controlId="namaKelas">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="id">
             <Form.Label>ID</Form.Label>
             <Form.Control
               type="text"
-              placeholder="1234"
-              autoFocus
+              name="id"
+              value={dataKaryawan.id}
+              readOnly
               className="form-modal-admin"
+              disabled
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="namaKaryawan">
+          <Form.Group className="mb-3" controlId="nip">
+            <Form.Label>Nip</Form.Label>
+            <Form.Control
+              type="text"
+              name="nip"
+              value={dataKaryawan.nip}
+              readOnly
+              className="form-modal-admin"
+              disabled
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="nama">
             <Form.Label>Nama</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Alya"
-              autoFocus
+              name="nama"
+              value={dataKaryawan.nama}
+              onChange={handleChange}
               className="form-modal-admin"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="jenisKelamin">
+          <Form.Group className="mb-3" controlId="jenis_kelamin">
             <Form.Label>Jenis Kelamin</Form.Label>
-            <Form.Select className="form-modal-admin">
-              <option value="">Pilih Jenis Kelamin</option>
-              <option value="Laki-laki">Laki-laki</option>
+            <Form.Select
+              className="form-modal-admin"
+              name="jenis_kelamin"
+              value={dataKaryawan.jenis_kelamin ? 'Pria' : 'Wanita'}
+              onChange={handleChange}
+            >
+              <option value="Pria">Pria</option>
               <option value="Wanita">Wanita</option>
             </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="posisi">
             <Form.Label>Posisi</Form.Label>
-            <Form.Select className="form-modal-admin">
+            <Form.Select
+              className="form-modal-admin"
+              name="posisi"
+              value={dataKaryawan.posisi}
+              onChange={handleChange}
+            >
               <option value="">Pilih Posisi</option>
-              <option value="Pemasaran">Staff Pemasaran</option>
-              <option value="Keuangan">Staff Keuangan</option>
-              <option value="Teknologi Informasi">Staff Logistik</option>
-              <option value="Pemasaran">Manager Pemasaran</option>
-              <option value="Keuangan">Manager Keuangan</option>
-              <option value="Teknologi Informasi">Manager Logistik</option>
+              <option value="karyawan_biasa">Karyawan Biasa</option>
+              <option value="personalia">Personalia</option>
+              <option value="manager">Manager</option>
             </Form.Select>
           </Form.Group>
           <Button className="btn-upload" variant="secondary" onClick={props.onHide}>
@@ -73,4 +141,3 @@ const UbahDataKaryawan = (props) => {
 };
 
 export default UbahDataKaryawan;
-

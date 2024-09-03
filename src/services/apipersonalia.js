@@ -7,19 +7,16 @@ import { toast } from "react-toastify";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 export const loginPersonalia = async (username, password) => {
     try {
-        console.log("Sending request...");
         const response = await axios.post(`${baseUrl}/login`, {
         username: username ,
         password: password,
       });
       const { token } = response.data;
       toast.success(response.data.message);
-      // console.log("token");
       return { token };
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message);
-        // console.log("Salah");
       }
       return {};
     }
@@ -28,7 +25,6 @@ export const loginPersonalia = async (username, password) => {
   /* ============ */
 /* === Kriteria=== */
 /* ============ */
-
   // get all kriteria
   export const getallKriteria = async () => {
     try {
@@ -138,8 +134,91 @@ export const deleteSubKriteria = async (id) => {
     throw error;
   }
 };
+ /* ============ */
+/* === Data Karyawan=== */
+/* ============ */
+
+// tampilkan karyawan
+export const getKaryawan = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/karyawan`);
+    console.log(response.data); 
+    if (response.data.status === "OK") {
+      return response.data.data;
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch (error) {
+    console.error("There was an error fetching the data!", error);
+    throw error;
+  }
+};
+// tampilkan karyawan berdasarkan ID 
+export const fetchKaryawanById = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/karyawan/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching kriteria:", error);
+    throw error;
+  }
+};
+
+//update karyawan
+export const updateKaryawan = async (id, dataKaryawan) => {
+  try {
+    const response = await axios.put(`${baseUrl}/karyawan/${id}`, dataKaryawan);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating kriteria:", error);
+    throw error;
+  }
+};
+//addd karyawan
+export const addKaryawan = async (dataKaryawan) => {
+  try {
+    const response = await axios.post(`${baseUrl}/karyawan`,dataKaryawan);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding subkriteria:", error);
+    throw error;
+  }
+};
+
+//Hapus Karyawan
+export const deleteKaryawan = async (id) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/karyawan/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 
-
-
-
+/* ============ */
+/* === Akun=== */
+/* ============ */
+// tampilkan AKun
+export const getallAkun = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/akun`);
+    console.log(response.data); 
+    if (response.data.status === "OK") {
+      return response.data.data;
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch (error) {
+    console.error("There was an error fetching the data!", error);
+    throw error;
+  }
+};
+export const deleteAkun = async (id) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/akun/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
