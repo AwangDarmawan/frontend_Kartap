@@ -87,9 +87,9 @@ const UbahKriteria2 = (props) => {
               type="text"
                name="kriteria"
               value={SubKriteria.kriteria}
-              readOnly
+              onChange={handleChange}
               className="form-modal-admin"
-              disabled
+              
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="namaKaryawan">

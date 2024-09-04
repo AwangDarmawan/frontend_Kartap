@@ -22,7 +22,10 @@ function App() {
           <Route path="/" element={<LoginKaryawan />} />
           <Route path="/Profil" element={<Profil/>} />
           <Route path="/Home/Karyawan" element={<HomeKaryawan/>}/>
+         
           <Route path="/DataTableKaryawan" element={<DataTableKaryawan/>} />
+
+
            {/* Personalia */}
           <Route path="/Personalia" element={<LoginPersonalia/>}/>
           <Route path="/Data/Karyawan" element={<DataKaryawan/>} />
@@ -30,9 +33,12 @@ function App() {
           <Route path="/Data/Kriteria" element={<DataKriteria/>} />
           <Route path="/Data/Perhitungan" element={<DataPerhitungan/>} />
           <Route path="/Data/Akun" element={<DataAkun/>} />
+
+
           {/* Manager */}
           <Route path="/Manager" element={<LoginManager/>}/>
           <Route path="/Data/Hasil" element={<DataHasil/>}/>
+        
         </Routes>
         <ToastContainer theme="colored" />
       </BrowserRouter>

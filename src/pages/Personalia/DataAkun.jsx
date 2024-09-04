@@ -12,7 +12,7 @@ const Akun = () => {
             <div className="admin-header">
                 <SidebarPersonalia />
             </div>
-            <div className="admin-body">
+            <div className="admin-body" >
                 <NavPersonalia />
                 <div className="px-5 pt-5">
                     <CardPersonalia/>

@@ -1,13 +1,12 @@
 import { useState,useEffect } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 import addBtn from "../../assets/gala_add.svg";
-import TambahAkun from "../Modal Personalia/TambahAkun";
+// import TambahAkun from "../Modal Personalia/TambahAkun";
 import UbahAkun from "../Modal Personalia/UbahAkun";
 import HapusAkun from "../Modal Personalia/HapusAkun";
 import { getallAkun } from "../../services/apipersonalia";
 
 const TableAkun = () => {
-  const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
   const [modalShowHapus, setModalShowHapus] = useState(false);
   const [akun, setAkun] = useState([]);
@@ -37,13 +36,6 @@ const TableAkun = () => {
         <div className="header">
           <h3 className="header-title my-0">Data Akun</h3>
           <div className="atribut">
-            <button
-              className="btn-tambah"
-              onClick={() => setModalShowTambah(true)}
-            >
-              <img src={addBtn} alt="" className="pe-2 img-tambah" />
-              Tambah
-            </button>
           </div>
         </div>
 
@@ -92,10 +84,6 @@ const TableAkun = () => {
       <UbahAkun
         show={modalShowUbah}
         onHide={() => setModalShowUbah(false)}
-      />
-      <TambahAkun
-        show={modalShowTambah}
-        onHide={() => setModalShowTambah(false)}
       />
       <HapusAkun
         show={modalShowHapus}

@@ -20,7 +20,7 @@ const Caoursel = () => {
               PT INDONESIA PROJEK LOGISTIK
             </h1>
             <p className="carousel-text text-white mb-4 mb-md-5">
-              PT Indonesia Projek Logistik sendiri memiliki dua jenis karyawan, yakni karyawan kontrak dan karyawan tetap.
+              PT Indonesia Projek Logistik memiliki dua jenis karyawan, yakni karyawan kontrak dan karyawan tetap.
             </p>
             <a
               className="btn btn-primary border-secondary rounded-pill carousel-button text-white"

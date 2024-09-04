@@ -1,8 +1,5 @@
-
-
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
 import "../../styles/Personalia/TambahDataKaryawan.css";
 import { deleteKaryawan } from "../../services/apipersonalia"; 
 import { toast } from "react-toastify";

@@ -8,6 +8,9 @@
     width: 100%; 
     height: auto;
   }
+  .title-brand{
+    color: black
+  }
   
   .navbar-brand h2 {
     color: #ffffff;

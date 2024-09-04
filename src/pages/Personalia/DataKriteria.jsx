@@ -11,7 +11,7 @@ const DataKriteria = () => {
             <div className="admin-header">
                 <SidebarPersonalia />
             </div>
-            <div className="admin-body overflow-auto" style={{ maxHeight: "600px" }}>
+            <div className="admin-body overflow-auto" style={{ maxHeight: "50%" }}>
                 <NavPersonalia />
                 <div className="p-5">
                     <TableKriteria1/>

@@ -1,6 +1,4 @@
 import "../../styles/Karyawan/HomeKaryawan.css";
-
-
 import Nav from "../../components/Karyawan/Nav";
 import Caoursel from "../../components/Home/Caoursel";
 import NavbarBottom from "../../components/Karyawan/NavbarBottom";
@@ -9,6 +7,7 @@ import Team from "../../components/Home/Team";
 import Contact from "../../components/Home/Contact";
 
 const HomeKaryawan = () => {
+  
   return (
     <>
       <Nav />

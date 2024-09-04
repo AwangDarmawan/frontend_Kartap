@@ -5,8 +5,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import btnUser from "../../assets/fi_user.svg";
 import {FaList,FaSignOutAlt } from "react-icons/fa";
 import btnIpl from "../../assets/ipll.png";
-
-
 const Nav = () => {
   const location = useLocation();
 
@@ -23,6 +21,10 @@ const Nav = () => {
   };
 
   const buttonText = getButtonText();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
 
   return (
     <>
@@ -64,10 +66,9 @@ const Nav = () => {
               </button>
             )}
           </Link>
-          <Link to={"/"} className="text-decoration-none">
+          <Link to={"/"} onClick={handleLogout} className="text-decoration-none">
             {location.pathname === "/Logout" ? (
               <button className="btn-menu-on">
-                {/* <img src={btnNotif} className="pt-1"/> */}
                 <FaSignOutAlt className="item-icon list"  />
                 <div className="mx-2">
                   {buttonText}
@@ -75,7 +76,6 @@ const Nav = () => {
               </button>
             ) : (
               <button className="btn-menu-off">
-                {/* <img src={btnNotif}/> */}
                 <FaSignOutAlt className="item-icon list" />
               </button>
             )}

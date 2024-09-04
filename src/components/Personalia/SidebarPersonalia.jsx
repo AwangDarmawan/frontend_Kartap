@@ -12,6 +12,7 @@ const SidebarPersonalia = () => {
     <div className="sidebar-admin-wrapper">
       <div className="navbar-brand">
       <img src={btnIpl} className='image'/>
+      <h5 className="title-brand">INDONESIA PROJEK LOGISTIK</h5>
       </div>
       <div className="sidebar-admin-menu">
       <Link to={"/Data/Akun"} className="sidebar-admin-item">

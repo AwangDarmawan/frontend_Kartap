@@ -71,7 +71,7 @@ const TableKriteria1 = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">Initial Kriteria</th>
+                <th scope="col">Id Kriteria</th>
                 <th scope="col">Nama Kriteria</th>
                 <th scope="col">Bobot Persentase</th>
                 <th scope="col">Bobot Faktor</th>

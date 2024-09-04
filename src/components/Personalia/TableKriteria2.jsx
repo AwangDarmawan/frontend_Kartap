@@ -69,8 +69,8 @@ const TableKriteria2 = () => {
             <thead className="table-primary">
               <tr className="header-table">
                 <th scope="col">No</th>
-                <th scope="col">Id SubKriteria</th>
                 <th scope="col">Id Kriteria</th>
+                <th scope="col">Id SubKriteria</th>
                 <th scope="col">Nama Subkriteria</th>
                 <th scope="col">Bobot Subkriteria</th>
                 <th scope="col">Aksi</th>
@@ -80,8 +80,8 @@ const TableKriteria2 = () => {
               {subkriteria.map((item, index) => (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
-                  <td className="text-kategori">S{item.id}</td> 
                   <td className="text-kategori">K{item.kriteria}</td> 
+                  <td className="text-kategori">SUB-{item.id}</td> 
                   <td className="text-kategori">{item.nama_subkriteria}</td>
                   <td className="text-kategori">{item.bobot_subkriteria}</td>
                   <td className="text-center align-middle">

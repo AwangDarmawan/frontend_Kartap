@@ -20,7 +20,11 @@ const SidebarManager = () => {
         </Link>
         <Link to={"/Manager"} className="sidebar-admin-item">
           <FaSignOutAlt className="item-icon" />
-          <p className="item">Keluar</p>
+          <p className="item"
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.href = "/manager";
+            }}>Keluar</p>
         </Link>
       </div>
     </div>
