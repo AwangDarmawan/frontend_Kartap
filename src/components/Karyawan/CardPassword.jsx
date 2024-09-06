@@ -1,10 +1,9 @@
 import { Row, Col, Container } from "react-bootstrap";
-
 import "../../styles/Karyawan/CardProfil.css"
-import FormProfil from "../../components/Karyawan/FormProfil";
-import SideBarAkun from "../../components/Karyawan/SidebarAkun";
+import FormPassword from "./FormPassword"
+import SideBarAkun from "./SidebarAkun";
 
-const CardProfil = () => {
+const CardPassword = () => {
   return (
     <div className="container py-2">
       <div className="card card-akun">
@@ -19,7 +18,7 @@ const CardProfil = () => {
 
             <Col md={7}>
               <Container className="px-4">
-                <FormProfil />
+                <FormPassword />
               </Container>
             </Col>
           </Row>
@@ -29,4 +28,4 @@ const CardProfil = () => {
   );
 };
 
-export default CardProfil;
+export default CardPassword;

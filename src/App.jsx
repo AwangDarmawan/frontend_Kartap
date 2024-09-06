@@ -12,6 +12,7 @@ import DataKriteria from "./pages/Personalia/DataKriteria";
 import DataPerhitungan from "./pages/Personalia/DataPerhitungan";
 import DataAkun from "./pages/Personalia/DataAkun";
 import DataHasil from "./pages/Manager/DataHasilKaryawan";
+import UbahPassword from "./pages/Karyawan/Password"
 function App() {
 
   return (
@@ -21,8 +22,8 @@ function App() {
           {/* karyawan */}
           <Route path="/" element={<LoginKaryawan />} />
           <Route path="/Profil" element={<Profil/>} />
+          <Route path="/Ubah-Password" element={<UbahPassword/>} />
           <Route path="/Home/Karyawan" element={<HomeKaryawan/>}/>
-         
           <Route path="/DataTableKaryawan" element={<DataTableKaryawan/>} />
 
 

@@ -11,14 +11,17 @@ const LoginKaryawan = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
+  
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
       const data = await AuthKaryawan(username, password);
       if (data.status === "OK" && data.user.role === 'karyawan') {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('karyawanID', data.user.id);
+        localStorage.setItem('karyawanUsername', data.user.username);
         console.log(data.token);
+        console.log('id',data.user.id);
         navigate('/Home/Karyawan');
       } 
     } catch (error) {

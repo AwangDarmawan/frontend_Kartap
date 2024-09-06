@@ -1,0 +1,26 @@
+.list-group {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  .list-item {
+    border-bottom: 1px solid #e5e5e5;
+    margin-right: 2rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .list-name {
+    color: var(--Black, #000);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    transition: 0.1s ease-in;
+  }
+  
+  .list-name:hover {
+    color: var(--Dark-Blue-100, #6148ff);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  

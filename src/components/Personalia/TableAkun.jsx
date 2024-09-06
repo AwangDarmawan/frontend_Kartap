@@ -1,8 +1,7 @@
 import { useState,useEffect } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
-import addBtn from "../../assets/gala_add.svg";
-// import TambahAkun from "../Modal Personalia/TambahAkun";
-import UbahAkun from "../Modal Personalia/UbahAkun";
+
+import VerifikasiSandiLama from "../Modal Personalia/VerifikasiSandiLama";
 import HapusAkun from "../Modal Personalia/HapusAkun";
 import { getallAkun } from "../../services/apipersonalia";
 
@@ -25,6 +24,12 @@ const TableAkun = () => {
     fetchAkun();
   }, []);
 
+  const handleUbahClick = (id) => {
+    console.log("ID yang dikirim:", id);
+    setAkunId(id);
+    setModalShowUbah(true);
+  };
+
   const handleHapusClick = (id) => {
     setAkunId(id);
     setModalShowHapus(true);
@@ -44,7 +49,7 @@ const TableAkun = () => {
             <thead className="table-primary">
               <tr className="header-table">
                 <th scope="col">ID</th>
-                <th scope="col">Nama</th>
+                <th scope="col">NIP</th>
                 <th scope="col">Password</th>
                 <th scope="col">Posisi</th>
                 <th scope="col">Aksi</th>
@@ -61,9 +66,7 @@ const TableAkun = () => {
                     <div className="btn-wrapper d-flex gap-2">
                       <button
                         className=" btn btn-create "
-                        onClick={() => {
-                          setModalShowUbah(true);
-                        }}
+                        onClick={() => handleUbahClick(item.id)}
                       >
                         Ubah
                       </button>
@@ -81,9 +84,10 @@ const TableAkun = () => {
           </table>
         </div>
       </div>
-      <UbahAkun
+      <VerifikasiSandiLama
         show={modalShowUbah}
         onHide={() => setModalShowUbah(false)}
+        id={AkunId}
       />
       <HapusAkun
         show={modalShowHapus}

@@ -7,10 +7,11 @@ import {FaList,FaSignOutAlt } from "react-icons/fa";
 import btnIpl from "../../assets/ipll.png";
 const Nav = () => {
   const location = useLocation();
-
+  const karyawanUsername = localStorage.getItem('karyawanUsername'); 
+  
   const getButtonText = () => {
     if (location.pathname === "/Profil") {
-      return "Profil";
+      return `${karyawanUsername}`;
     } else if (location.pathname === "/DataTableKaryawan") {
       return "Informasi Pengangkatan";
     }  else if (location.pathname === "/") {
@@ -23,6 +24,7 @@ const Nav = () => {
   const buttonText = getButtonText();
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("karyawanUsername");
     window.location.href = "/";
   };
 

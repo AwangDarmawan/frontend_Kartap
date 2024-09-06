@@ -27,7 +27,7 @@ const TambahDataKaryawan = (props) => {
     try {
       const response = await addKaryawan(dataKaryawan); 
       if (response.status === "OK") {
-        toast.success("Kriteria berhasil ditambahkan!"); 
+        toast.success("Data berhasil ditambahkan!"); 
         props.onHide(); 
       } else {
         toast.error(response.message || "Terjadi kesalahan saat menambahkan kriteria."); 

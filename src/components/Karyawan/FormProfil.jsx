@@ -8,7 +8,7 @@ const FormProfil = () => {
       <div className="input-profile ">
       <form className="mt-2">
           <label className="text-label">ID</label>
-          <input type="text" className="form-control" placeholder="123"  disabled />
+          <input type="text" className="form-control" placeholder="123"disabled />
         </form>
         <form className="mt-2">
           <label className="text-label">Nama</label>
@@ -18,7 +18,7 @@ const FormProfil = () => {
         <form className="mt-1">
           <label className="text-label">Jenis Kelamin</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
             placeholder="Laki-laki"
             disabled 
