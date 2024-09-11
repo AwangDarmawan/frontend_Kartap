@@ -125,7 +125,7 @@ export const addSubKriteria = async (subkriteriaData) => {
   }
 };
 
-//delete kriteria 
+//delete Subkriteria 
 export const deleteSubKriteria = async (id) => {
   try {
     const response = await axios.delete(`${baseUrl}/subkriteria/${id}`);

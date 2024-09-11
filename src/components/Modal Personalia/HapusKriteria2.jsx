@@ -7,12 +7,30 @@ import { deleteSubKriteria } from "../../services/apipersonalia";
 import { toast } from "react-toastify";
 
 const HapusKriteria2 = ({ id, onHide, fetchSubKriteria, ...props }) => {
+  // const handleDelete = async () => {
+  //   try {
+  //     await deleteSubKriteria(id);
+  //     fetchSubKriteria(); 
+  //     onHide(); 
+  //     toast.success("SubKriteria removed successfully");
+  //   } catch (error) {
+  //     toast.error("Error removing kriteria");
+  //     console.error("Error deleting kriteria:", error);
+  //   }
+  // };
   const handleDelete = async () => {
     try {
-      await deleteSubKriteria(id);
-      fetchSubKriteria(); 
-      onHide(); 
-      toast.success("SubKriteria removed successfully");
+      const response = await deleteSubKriteria(id);
+      if (response.message.includes("violates foreign key constraint")) {
+        toast.error("data is still related");
+        console.error(response.message)
+      } else if (response.message === "Subkriteria removed successfully") {
+        fetchSubKriteria(); 
+        onHide(); 
+        toast.success(response.message);
+      } else{
+        console.error("Error deleting kriteria:");
+      }
     } catch (error) {
       toast.error("Error removing kriteria");
       console.error("Error deleting kriteria:", error);

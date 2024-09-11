@@ -37,7 +37,7 @@ const LoginKaryawan = () => {
             <div className="auth-form-wrapper">
               <h3 className="txtmasuk font-bold">Login</h3>
               <form onSubmit={loginHandler} className="fm">
-                <label className="mt-3">ID Karyawan</label>
+                <label className="mt-3">NIP Karyawan</label>
                 <div className="input-form-user">
                   <input
                     type="text"

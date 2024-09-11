@@ -2,7 +2,6 @@
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
 import { deleteKriteria } from "../../services/apipersonalia"; 
 import { toast } from "react-toastify";
@@ -10,17 +9,35 @@ import { toast } from "react-toastify";
 const HapusKriteria1 = ({ id, onHide, fetchKriteria, ...props }) => {
  
 
+  // const handleDelete = async () => {
+  //   try {
+  //     await deleteKriteria(id);
+  //     fetchKriteria(); 
+  //     onHide(); 
+  //     toast.success("Kriteria removed successfully");
+  //   } catch (error) {
+  //     toast.error("Error removing kriteria");
+  //     console.error("Error deleting kriteria:", error);
+  //   }
+  // };
+
   const handleDelete = async () => {
     try {
-      await deleteKriteria(id);
-      fetchKriteria(); 
-      onHide(); 
-      toast.success("Kriteria removed successfully");
+      const response = await deleteKriteria(id);
+      if (response.message.includes("violates foreign key constraint")) {
+        toast.error("data is still related");
+        console.error(response.message)
+      } else if (response.message === "Kriteria removed successfully") {
+        fetchKriteria(); 
+        onHide(); 
+        toast.success(response.message);
+      } 
     } catch (error) {
       toast.error("Error removing kriteria");
       console.error("Error deleting kriteria:", error);
     }
   };
+  
 
   return (
     <Modal

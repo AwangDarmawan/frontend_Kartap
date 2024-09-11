@@ -123,9 +123,6 @@ const TableKriteria1 = () => {
         id={selectedKriteriaId}
         fetchKriteria={fetchKriteria} 
         />
-    
-
-
     </>
   );
 };

@@ -8,6 +8,7 @@ import btnIpl from "../../assets/ipll.png";
 const Nav = () => {
   const location = useLocation();
   const karyawanUsername = localStorage.getItem('karyawanUsername'); 
+  const karyawanID = localStorage.getItem('karyawanID'); 
   
   const getButtonText = () => {
     if (location.pathname === "/Profil") {
@@ -25,6 +26,7 @@ const Nav = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("karyawanUsername");
+    localStorage.removeItem("karyawanID");
     window.location.href = "/";
   };
 

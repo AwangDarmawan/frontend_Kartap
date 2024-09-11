@@ -42,7 +42,7 @@ const LoginManager = () => {
             </div>
             <form onSubmit={loginHandler} className="admin-body-form">
               <div className="admin-form-item">
-                <label>ID Manager</label>
+                <label>NIP Manager</label>
                 <input
                   type="text"
                   placeholder="ID Manager"

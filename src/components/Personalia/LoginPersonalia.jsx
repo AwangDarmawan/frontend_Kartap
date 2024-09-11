@@ -42,7 +42,7 @@ const LoginPersonalia = () => {
             </div>
             <form onSubmit={loginHandler} className="admin-body-form">
               <div className="admin-form-item">
-                <label>ID Personalia</label>
+                <label>NIP Personalia</label>
                 <input
                   type="text"
                   placeholder="ID Personalia"
