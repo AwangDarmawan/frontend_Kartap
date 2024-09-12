@@ -8,19 +8,6 @@ import { toast } from "react-toastify";
 
 const HapusKriteria1 = ({ id, onHide, fetchKriteria, ...props }) => {
  
-
-  // const handleDelete = async () => {
-  //   try {
-  //     await deleteKriteria(id);
-  //     fetchKriteria(); 
-  //     onHide(); 
-  //     toast.success("Kriteria removed successfully");
-  //   } catch (error) {
-  //     toast.error("Error removing kriteria");
-  //     console.error("Error deleting kriteria:", error);
-  //   }
-  // };
-
   const handleDelete = async () => {
     try {
       const response = await deleteKriteria(id);

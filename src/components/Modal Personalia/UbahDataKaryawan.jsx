@@ -75,9 +75,9 @@ const UbahDataKaryawan = (props) => {
               type="text"
               name="id"
               value={dataKaryawan.id}
-              readOnly
-              className="form-modal-admin"
               disabled
+              className="form-modal-admin"
+              readOnly
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="nip">
@@ -86,9 +86,8 @@ const UbahDataKaryawan = (props) => {
               type="text"
               name="nip"
               value={dataKaryawan.nip}
-              readOnly
+              onChange={handleChange}
               className="form-modal-admin"
-              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="nama">

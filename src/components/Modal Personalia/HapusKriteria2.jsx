@@ -7,17 +7,7 @@ import { deleteSubKriteria } from "../../services/apipersonalia";
 import { toast } from "react-toastify";
 
 const HapusKriteria2 = ({ id, onHide, fetchSubKriteria, ...props }) => {
-  // const handleDelete = async () => {
-  //   try {
-  //     await deleteSubKriteria(id);
-  //     fetchSubKriteria(); 
-  //     onHide(); 
-  //     toast.success("SubKriteria removed successfully");
-  //   } catch (error) {
-  //     toast.error("Error removing kriteria");
-  //     console.error("Error deleting kriteria:", error);
-  //   }
-  // };
+
   const handleDelete = async () => {
     try {
       const response = await deleteSubKriteria(id);
@@ -28,9 +18,7 @@ const HapusKriteria2 = ({ id, onHide, fetchSubKriteria, ...props }) => {
         fetchSubKriteria(); 
         onHide(); 
         toast.success(response.message);
-      } else{
-        console.error("Error deleting kriteria:");
-      }
+      } 
     } catch (error) {
       toast.error("Error removing kriteria");
       console.error("Error deleting kriteria:", error);

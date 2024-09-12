@@ -72,18 +72,18 @@ const UbahKriteria1 = (props) => {
       <Modal.Body className="modal-body-admin">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="id">
-            <Form.Label>ID</Form.Label>
+            <Form.Label>ID Kriteria</Form.Label>
             <Form.Control
               type="text"
               name="id"
               value={kriteria.id}
-              readOnly
               className="form-modal-admin"
+              readOnly
               disabled
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="namaKriteria">
-            <Form.Label>Nama Kriteria</Form.Label>
+            <Form.Label>ID Kriteria</Form.Label>
             <Form.Control
               type="text"
               name="nama_kriteria"

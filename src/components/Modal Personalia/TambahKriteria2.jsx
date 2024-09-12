@@ -55,7 +55,7 @@ const TambahKriteria2 = (props) => {
       <Modal.Body className="modal-body-admin">
         <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="namaSubKriteria">
-            <Form.Label>Kriteria</Form.Label>
+            <Form.Label>ID Kriteria</Form.Label>
             <Form.Control
               type="text"
               name="kriteria"
@@ -65,6 +65,18 @@ const TambahKriteria2 = (props) => {
               className="form-modal-admin"
             />
           </Form.Group>
+        <Form.Group className="mb-3" controlId="id">
+            <Form.Label>ID SubKriteria</Form.Label>
+            <Form.Control
+              type="text"
+              name="id"
+              value={subkriteria.id}
+              placeholder="4"
+              className="form-modal-admin"
+              onChange={handleChange}
+            />
+          </Form.Group>
+        
           <Form.Group className="mb-3" controlId="namaSubKriteria">
             <Form.Label>Nama SubKriteria</Form.Label>
             <Form.Control

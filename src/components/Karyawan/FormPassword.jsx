@@ -19,7 +19,7 @@ const FormPassword = () => {
       <form className="mt-2">
           <label className="text-label">ID</label>
           <input type="text" className="form-control" placeholder="123" value={karyawanID} readOnly disabled/>
-          <label className="text-label">Nama</label>
+          <label className="text-label">NIP</label>
           <input type="text" className="form-control" placeholder="123" value={karyawanUsername} readOnly disabled/>
           <label className="text-label">Password</label>
           <input type="password" className="form-control" placeholder="*********" disabled/>

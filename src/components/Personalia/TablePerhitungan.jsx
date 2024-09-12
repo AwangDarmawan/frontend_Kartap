@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import "../../styles/Personalia/TableDataKaryawan.css";
 
@@ -6,9 +6,20 @@ import addBtn from "../../assets/gala_add.svg";
 import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
 import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
 
+// const TablePerhitungan = () => {
+//   const [modalShowTambah, setModalShowTambah] = useState(false);
+//   const [modalShowUbah, setModalShowUbah] = useState(false);
 const TablePerhitungan = () => {
+  const [kriteriaData, setKriteriaData] = useState([]);
   const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
+  // Ambil data dari localStorage
+  useEffect(() => {
+    const storedKriteria = localStorage.getItem('kriteriaData');
+    if (storedKriteria) {
+      setKriteriaData(JSON.parse(storedKriteria));
+    }
+  }, []);
   return (
     <>
       <div>
@@ -35,12 +46,9 @@ const TablePerhitungan = () => {
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Jabatan</th>
                 <th scope="col">Posisi</th>
-                <th scope="col">Kinerja</th>
-                <th scope="col">Lama Bekerja</th>
-                <th scope="col">Kehadiran</th>
-                <th scope="col">Pengalaman Kerja</th>
-                <th scope="col">Usia</th>
-                <th scope="col">Pendidikan</th>
+                {kriteriaData.map(item => (
+                  <th key={item.id} scope="col">"{item.nama_kriteria}"</th>
+                ))}
                 <th scope="col">Total</th>
                 <th scope="col">status</th>
                 <th scope="col">Aksi</th>

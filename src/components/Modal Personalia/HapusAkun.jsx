@@ -7,7 +7,8 @@ import "../../styles/Personalia/TambahDataKaryawan.css";
 import { deleteAkun } from "../../services/apipersonalia"; 
 import { toast } from "react-toastify";
 
-const HapusKaryawan = ({ id, onHide, fetchAkun, ...props }) => {
+const HapusAkun = ({ id, onHide, fetchAkun, ...props }) => {
+  
   const handleDelete = async () => {
     try {
       await deleteAkun(id);
@@ -19,6 +20,7 @@ const HapusKaryawan = ({ id, onHide, fetchAkun, ...props }) => {
       console.error("Error deleting kriteria:", error);
     }
   };
+
 
   
 
@@ -51,6 +53,6 @@ const HapusKaryawan = ({ id, onHide, fetchAkun, ...props }) => {
   );
 };
 
-export default HapusKaryawan;
+export default HapusAkun;
 
 

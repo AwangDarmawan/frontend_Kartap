@@ -70,18 +70,18 @@ const UbahKriteria2 = (props) => {
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="namaKelas">
+          <Form.Group className="mb-3" controlId="id">
             <Form.Label>ID Subkriteria</Form.Label>
             <Form.Control
               type="text"
               name="id"
               value={SubKriteria.id}
-              readOnly
               className="form-modal-admin"
+              readOnly
               disabled
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="namaKaryawan">
+          <Form.Group className="mb-3" controlId="kriteria">
             <Form.Label>ID Kriteria</Form.Label>
             <Form.Control
               type="text"
@@ -92,7 +92,7 @@ const UbahKriteria2 = (props) => {
               
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="namaKaryawan">
+          <Form.Group className="mb-3" controlId="nama_subkriteria">
             <Form.Label>Nama SubKriteria</Form.Label>
             <Form.Control
               type="text"
@@ -102,7 +102,7 @@ const UbahKriteria2 = (props) => {
               className="form-modal-admin"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="namaKaryawan">
+          <Form.Group className="mb-3" controlId="bobot_subkriteria">
             <Form.Label>bobot SubKriteria</Form.Label>
             <Form.Control
               type="text"
