@@ -1,6 +1,7 @@
 import CardPersonalia from "../../components/Personalia/CardPersonalia";
 import NavPersonalia from "../../components/Personalia/NavPersonalia";
 import SidebarPersonalia from "../../components/Personalia/SidebarPersonalia";
+import TablePerankingan from "../../components/Personalia/TablePerankingan";
 import TablePerhitungan from "../../components/Personalia/TablePerhitungan";
 
 import "../../styles/Personalia/Personalia.css"
@@ -16,6 +17,9 @@ const DataPerhitungan = () => {
                 <NavPersonalia />
                 <div className="px-5 pt-5">
                     <CardPersonalia/>
+                </div>
+                <div className="px-5 pt-5">
+                    <TablePerankingan/>
                 </div>
                 <div className="p-5">
                     <TablePerhitungan/>

@@ -214,11 +214,73 @@ export const getallAkun = async () => {
     throw error;
   }
 };
+//delete akun 
 export const deleteAkun = async (id) => {
   try {
     const response = await axios.delete(`${baseUrl}/akun/${id}`);
     return response.data;
   } catch (error) {
+    throw error;
+  }
+};
+
+/* ============ */
+/* === Evaluasi Faktor === */
+/* ============ */
+export const getallEvaluasi  = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/evaluasi-faktor`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Evaluasi-faktor :", error);
+    throw error;
+  }
+};
+
+export const getallEvaluasiById  = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/evaluasi-faktor/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Evaluasi-faktor :", error);
+    throw error;
+  }
+};
+
+/* ============ */
+/* === perangkingan === */
+/* ============ */
+export const getperangkingan  = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/perankingan`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching perangkingan :", error);
+    throw error;
+  }
+};
+
+
+/* ============ */
+/* === Perhitungan === */
+/* ============ */
+export const getPerhitungan  = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/perhitungan`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Evaluasi-faktor :", error);
+    throw error;
+  }
+};
+
+//Tambah ADDperhitungan
+export const addperhitungan = async (PerhitunganData) => {
+  try {
+    const response = await axios.post(`${baseUrl}/perhitungan`, PerhitunganData);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding subkriteria:", error);
     throw error;
   }
 };

@@ -17,21 +17,11 @@ const TableKriteria1 = () => {
   const [selectedKriteriaId, setSelectedKriteriaId] = useState(null);
  
 
-  // const fetchKriteria = async () => {
-  //   try {
-  //     const result = await getallKriteria();
-  //     setKriteria(result.data);
-  //   } catch (error) {
-  //     console.error("Error fetching kriteria:", error);
-  //   }
-  // };
+
   const fetchKriteria = async () => {
     try {
       const result = await getallKriteria();
       setKriteria(result.data);
-  
-      // Simpan data ke dalam localStorage
-      localStorage.setItem("kriteriaData", JSON.stringify(result.data));
     } catch (error) {
       console.error("Error fetching kriteria:", error);
     }

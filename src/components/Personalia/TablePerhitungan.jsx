@@ -1,25 +1,175 @@
-import { useState,useEffect } from "react";
+// import { useState,useEffect} from "react";
 
-import "../../styles/Personalia/TableDataKaryawan.css";
+// import "../../styles/Personalia/TableDataKaryawan.css";
 
-import addBtn from "../../assets/gala_add.svg";
-import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
-import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
+// import addBtn from "../../assets/gala_add.svg";
+// import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
+// import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
+// import { getPerhitungan } from "../../services/apipersonalia";
 
 // const TablePerhitungan = () => {
 //   const [modalShowTambah, setModalShowTambah] = useState(false);
 //   const [modalShowUbah, setModalShowUbah] = useState(false);
+//   const [Perhitungan, setPerhitungan] = useState([]);
+
+//   const fetchperhitungan = async () => {
+//     try {
+//       const result = await getPerhitungan();
+//       setPerhitungan(result.data);
+//     } catch (error) {
+//       console.error("Error fetching kriteria:", error);
+//     }
+//   };
+  
+//   useEffect(() => {
+//     fetchperhitungan();
+//   }, []);
+ 
+//   return (
+//     <>
+//       <div>
+//         {/* Header  */}
+//         <div className="header">
+//           <h3 className="header-title my-0">Data Perhitungan</h3>
+//           <div className="atribut">
+//             <button
+//               className="btn-tambah"
+//               onClick={() => setModalShowTambah(true)}
+//             >
+//               <img src={addBtn} alt="" className="pe-2 img-tambah" />
+//               Tambah
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="table-responsive">
+//           <table className="table mt-3">
+//             <thead className="table-primary">
+//               <tr className="header-table">
+//                 <th scope="col">ID Karyawan</th>
+//                 <th scope="col">ID Kriteria</th>
+//                 <th scope="col">ID Subkriteria</th>
+//                 <th scope="col">ID Evaluasi Faktor</th>
+//                 <th scope="col">Hasil</th>
+//                 <th scope="col">Aksi</th>
+//               </tr>
+//             </thead>
+//             <tbody className="isi-table">
+//             {Perhitungan.map(item => (
+//                 <tr key={item.id}>
+//                   <td className="text-kategori">{item.karyawan}</td>
+//                   <td className="text-nama">{item.kriteria}</td>
+//                   <td className="text-nama">{item.subkriteria}</td>
+//                   <td className="text-nama">{item.hasil_evaluasi_faktor}</td>
+//                   <td className="text-nama">{item.hasil_perhitungan}</td>
+//                 <td className="aksi-btn ">
+//                   <div className="btn-wrapper d-flex gap-2">
+//                     <button
+//                       className=" btn btn-create "
+//                       onClick={() => setModalShowUbah(true)}
+//                     >
+//                       Ubah
+//                     </button>
+//                     <button className=" btn btn-delete">Hapus</button>
+//                   </div>
+//                 </td>
+//               </tr>
+//             ))}
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
+//       <UbahDataPerhitungan
+//         show={modalShowUbah}
+//         onHide={() => setModalShowUbah(false)}
+//       />
+//       <TambahDataPerhitungan
+//         show={modalShowTambah}
+//         onHide={() => setModalShowTambah(false)}
+//       />
+//     </>
+//   );
+// };
+
+// export default TablePerhitungan;
+
+import { useState, useEffect } from "react";
+import "../../styles/Personalia/TableDataKaryawan.css";
+import addBtn from "../../assets/gala_add.svg";
+import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
+import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
+import { getPerhitungan, getallKriteria, getallSubKriteria,getKaryawan } from "../../services/apipersonalia";
+
 const TablePerhitungan = () => {
-  const [kriteriaData, setKriteriaData] = useState([]);
   const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
-  // Ambil data dari localStorage
-  useEffect(() => {
-    const storedKriteria = localStorage.getItem('kriteriaData');
-    if (storedKriteria) {
-      setKriteriaData(JSON.parse(storedKriteria));
+  const [perhitungan, setPerhitungan] = useState([]);
+  const [kriteria, setKriteria] = useState([]);
+  const [subkriteria, setSubkriteria] = useState([]);
+  const [karyawan, setKaryawan] = useState([]);
+  const fetchPerhitungan = async () => {
+    try {
+      const result = await getPerhitungan();
+      setPerhitungan(result.data);
+    } catch (error) {
+      console.error("Error fetching perhitungan:", error);
     }
+  };
+
+  const fetchkaryawan = async () => {
+    try {
+      const result = await getKaryawan();
+      setKaryawan(result);
+    } catch (error) {
+      console.error("Error fetching perhitungan:", error);
+    }
+  };
+
+  const fetchKriteria = async () => {
+    try {
+      const result = await getallKriteria();
+      setKriteria(result.data);
+    } catch (error) {
+      console.error("Error fetching kriteria:", error);
+    }
+  };
+
+  const fetchSubkriteria = async () => {
+    try {
+      const result = await getallSubKriteria();
+      setSubkriteria(result);
+    } catch (error) {
+      console.error("Error fetching subkriteria:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPerhitungan();
+    fetchkaryawan();
+    fetchKriteria();
+    fetchSubkriteria();
   }, []);
+
+  const getKriteriaName = (id) => {
+    const item = kriteria.find(k => k.id === id);
+    return item ? item.nama_kriteria : "Unknown";
+  };
+
+  const getSubKriteriaName = (id) => {
+    const item = subkriteria.find(s => s.id === id);
+    return item ? item.nama_subkriteria : "Tidak ada data";
+  };
+  const getKaryawanName = (id) => {
+    const item = karyawan.find(s => s.id === id);
+    return item ? item.nama : "Tidak ada data";
+  };
+  const getKaryawanNIP = (id) => {
+    const item = karyawan.find(s => s.id === id);
+    return item ? item.nip : "Tidak ada data";
+  };
+
+  
+
   return (
     <>
       <div>
@@ -41,46 +191,35 @@ const TablePerhitungan = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">ID</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Jabatan</th>
-                <th scope="col">Posisi</th>
-                {kriteriaData.map(item => (
-                  <th key={item.id} scope="col">"{item.nama_kriteria}"</th>
-                ))}
-                <th scope="col">Total</th>
-                <th scope="col">status</th>
+              <th scope="col">NIP</th>
+                <th scope="col">Karyawan</th>
+                <th scope="col">Kriteria</th>
+                <th scope="col">Subkriteria</th>
+                <th scope="col">Hasil</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
             <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">sp123</th>
-                <td className="text-kategori">Alya</td>
-                <td className="text-nama">Wanita</td>
-                <td className="text-nama">Staff</td>
-                <td className="text-nama">Staff</td>
-                <td className="text-nama">Mencapai Target<br></br>(1)</td>
-                <td className="text-nama">3 bulan <br></br>(0.5)</td>
-                <td className="text-nama">100% <br></br>(0.5)</td>
-                <td className="text-nama">Fresh Graduate<br></br>(0.5)</td>
-                <td className="text-nama">23 tahun <br></br> (1)</td>
-                <td className="text-nama">S1 <br></br>(1)</td>
-                <td className="text-nama">1</td>
-                <td className="text-nama">diangkat</td>
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalShowUbah(true)}
-                    >
-                      Ubah
-                    </button>
-                    <button className=" btn btn-delete">Hapus</button>
-                  </div>
-                </td>
-              </tr>
+              {perhitungan.map(item => (
+                <tr key={item.id}>
+                  <td className="text-kategori">{getKaryawanNIP(item.karyawan)}</td>
+                  <td className="text-kategori">{getKaryawanName(item.karyawan)}</td>
+                  <td className="text-nama">{getKriteriaName(item.kriteria)}</td>
+                  <td className="text-nama">{getSubKriteriaName(item.subkriteria)}</td>
+                  <td className="text-nama">{item.hasil_perhitungan}</td>
+                  <td className="aksi-btn">
+                    <div className="btn-wrapper d-flex gap-2">
+                      <button
+                        className="btn btn-create"
+                        onClick={() => setModalShowUbah(true)}
+                      >
+                        Ubah
+                      </button>
+                      <button className="btn btn-delete">Hapus</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -98,3 +237,4 @@ const TablePerhitungan = () => {
 };
 
 export default TablePerhitungan;
+

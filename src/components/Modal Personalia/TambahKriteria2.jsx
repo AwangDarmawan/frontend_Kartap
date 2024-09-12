@@ -73,7 +73,8 @@ const TambahKriteria2 = (props) => {
               value={subkriteria.id}
               placeholder="4"
               className="form-modal-admin"
-              onChange={handleChange}
+              readOnly
+              disabled
             />
           </Form.Group>
         
