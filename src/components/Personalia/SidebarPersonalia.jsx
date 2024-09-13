@@ -1,6 +1,6 @@
  import React from 'react';
 import { Link } from "react-router-dom";
-import {FaUser, FaList, FaCalculator, FaSignOutAlt } from "react-icons/fa";
+import {FaUser, FaList, FaCalculator, FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
 
 import '../../styles/Personalia/SidebarPersonalia.css'; 
 import btnIpl from "../../assets/ipll.png";
@@ -30,6 +30,11 @@ const SidebarPersonalia = () => {
         <Link to={"/Data/Perhitungan"} className="sidebar-admin-item">
           <FaCalculator className="item-icon" />
           <p className="item">Perhitungan</p>
+        </Link>
+
+        <Link to={"/Informasi/Penentu"} className="sidebar-admin-item">
+          <FaSignInAlt className="item-icon" />
+          <p className="item">Di setujui </p>
         </Link>
         <Link to={"/Personalia"} className="sidebar-admin-item">
           <FaSignOutAlt className="item-icon" />

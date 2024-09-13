@@ -1,11 +1,11 @@
 import CardPersonalia from "../../components/Personalia/CardPersonalia";
 import NavPersonalia from "../../components/Personalia/NavPersonalia";
 import SidebarPersonalia from "../../components/Personalia/SidebarPersonalia";
-import TablePerhitungan from "../../components/Personalia/TablePerhitungan";
-import TableHasilPerhitungan from "../../components/Personalia/TableHasilPerhitungan";
+import TablePerankingan from "../../components/Personalia/TablePerankingan";
+
 import "../../styles/Personalia/Personalia.css"
 
-const DataPerhitungan = () => {
+const Informasi = () => {
   return (
     <>
         <div className="dashboard-admin-wrapper">
@@ -18,10 +18,7 @@ const DataPerhitungan = () => {
                     <CardPersonalia/>
                 </div>
                 <div className="px-5 pt-5">
-                    <TableHasilPerhitungan/>
-                </div>
-                <div className="p-5">
-                    <TablePerhitungan/>
+                    <TablePerankingan/>
                 </div>
             </div>
         </div>
@@ -29,4 +26,4 @@ const DataPerhitungan = () => {
   )
 }
 
-export default DataPerhitungan;
+export default Informasi;

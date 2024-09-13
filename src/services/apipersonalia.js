@@ -284,3 +284,13 @@ export const addperhitungan = async (PerhitunganData) => {
     throw error;
   }
 };
+
+//delete perhitungan
+export const deleteperhitungan = async (id) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/perhitungan/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

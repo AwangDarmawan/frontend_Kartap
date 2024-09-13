@@ -10,6 +10,7 @@ import DataKaryawan from "./pages/Personalia/DataKaryawan";
 import DataTableKaryawan from "./pages/Karyawan/DataTableKaryawan"
 import DataKriteria from "./pages/Personalia/DataKriteria";
 import DataPerhitungan from "./pages/Personalia/DataPerhitungan";
+import Informasi from "./pages/Personalia/Informasi";
 import DataAkun from "./pages/Personalia/DataAkun";
 import DataHasil from "./pages/Manager/DataHasilKaryawan";
 import UbahPassword from "./pages/Karyawan/Password"
@@ -33,6 +34,7 @@ function App() {
           <Route path="/Data/Kriteria" element={<DataKriteria/>} />
           <Route path="/Data/Kriteria" element={<DataKriteria/>} />
           <Route path="/Data/Perhitungan" element={<DataPerhitungan/>} />
+          <Route path="/Informasi/Penentu" element={<Informasi/>} />
           <Route path="/Data/Akun" element={<DataAkun/>} />
 
 

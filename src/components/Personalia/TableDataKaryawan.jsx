@@ -69,7 +69,7 @@ const TableDataKaryawan = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">ID</th>
+                {/* <th scope="col">ID</th> */}
                 <th scope="col">Nip</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis Kelamin</th>
@@ -80,7 +80,7 @@ const TableDataKaryawan = () => {
             <tbody className="isi-table">
             {dataKaryawan.map((karyawan) => (
                 <tr key={karyawan.id}>
-                  <th scope="row" className="text-kode">{karyawan.id}</th>
+                  {/* <th scope="row" className="text-kode">{karyawan.id}</th> */}
                   <td className="text-kategori">{karyawan.nip}</td>
                   <td className="text-kategori">{karyawan.nama}</td>
                   <td className="text-nama">{karyawan.jenis_kelamin ? "Pria" : "Wanita"}</td>

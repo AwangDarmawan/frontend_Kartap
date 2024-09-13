@@ -1,112 +1,21 @@
-// import { useState,useEffect} from "react";
 
-// import "../../styles/Personalia/TableDataKaryawan.css";
-
-// import addBtn from "../../assets/gala_add.svg";
-// import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
-// import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
-// import { getPerhitungan } from "../../services/apipersonalia";
-
-// const TablePerhitungan = () => {
-//   const [modalShowTambah, setModalShowTambah] = useState(false);
-//   const [modalShowUbah, setModalShowUbah] = useState(false);
-//   const [Perhitungan, setPerhitungan] = useState([]);
-
-//   const fetchperhitungan = async () => {
-//     try {
-//       const result = await getPerhitungan();
-//       setPerhitungan(result.data);
-//     } catch (error) {
-//       console.error("Error fetching kriteria:", error);
-//     }
-//   };
-  
-//   useEffect(() => {
-//     fetchperhitungan();
-//   }, []);
- 
-//   return (
-//     <>
-//       <div>
-//         {/* Header  */}
-//         <div className="header">
-//           <h3 className="header-title my-0">Data Perhitungan</h3>
-//           <div className="atribut">
-//             <button
-//               className="btn-tambah"
-//               onClick={() => setModalShowTambah(true)}
-//             >
-//               <img src={addBtn} alt="" className="pe-2 img-tambah" />
-//               Tambah
-//             </button>
-//           </div>
-//         </div>
-
-//         <div className="table-responsive">
-//           <table className="table mt-3">
-//             <thead className="table-primary">
-//               <tr className="header-table">
-//                 <th scope="col">ID Karyawan</th>
-//                 <th scope="col">ID Kriteria</th>
-//                 <th scope="col">ID Subkriteria</th>
-//                 <th scope="col">ID Evaluasi Faktor</th>
-//                 <th scope="col">Hasil</th>
-//                 <th scope="col">Aksi</th>
-//               </tr>
-//             </thead>
-//             <tbody className="isi-table">
-//             {Perhitungan.map(item => (
-//                 <tr key={item.id}>
-//                   <td className="text-kategori">{item.karyawan}</td>
-//                   <td className="text-nama">{item.kriteria}</td>
-//                   <td className="text-nama">{item.subkriteria}</td>
-//                   <td className="text-nama">{item.hasil_evaluasi_faktor}</td>
-//                   <td className="text-nama">{item.hasil_perhitungan}</td>
-//                 <td className="aksi-btn ">
-//                   <div className="btn-wrapper d-flex gap-2">
-//                     <button
-//                       className=" btn btn-create "
-//                       onClick={() => setModalShowUbah(true)}
-//                     >
-//                       Ubah
-//                     </button>
-//                     <button className=" btn btn-delete">Hapus</button>
-//                   </div>
-//                 </td>
-//               </tr>
-//             ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//       <UbahDataPerhitungan
-//         show={modalShowUbah}
-//         onHide={() => setModalShowUbah(false)}
-//       />
-//       <TambahDataPerhitungan
-//         show={modalShowTambah}
-//         onHide={() => setModalShowTambah(false)}
-//       />
-//     </>
-//   );
-// };
-
-// export default TablePerhitungan;
 
 import { useState, useEffect } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 import addBtn from "../../assets/gala_add.svg";
 import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
-import UbahDataPerhitungan from "../Modal Personalia/UbahDataPerhitungan";
+import HapusDataPerhitungan from "../Modal Personalia/HapusDataPerhitungan";
 import { getPerhitungan, getallKriteria, getallSubKriteria,getKaryawan } from "../../services/apipersonalia";
 
 const TablePerhitungan = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
-  const [modalShowUbah, setModalShowUbah] = useState(false);
+  const [modalShowHapus, setModalShowHapus] = useState(false);
   const [perhitungan, setPerhitungan] = useState([]);
   const [kriteria, setKriteria] = useState([]);
   const [subkriteria, setSubkriteria] = useState([]);
   const [karyawan, setKaryawan] = useState([]);
+  const [PerhitunganId, setPerhitunganId] = useState(null);
+
   const fetchPerhitungan = async () => {
     try {
       const result = await getPerhitungan();
@@ -168,6 +77,11 @@ const TablePerhitungan = () => {
     return item ? item.nip : "Tidak ada data";
   };
 
+  const handleHapusClick = (id) => {
+    console.log("Hapus:", id);
+    setPerhitunganId(id);
+    setModalShowHapus(true);
+  };
   
 
   return (
@@ -211,11 +125,13 @@ const TablePerhitungan = () => {
                     <div className="btn-wrapper d-flex gap-2">
                       <button
                         className="btn btn-create"
-                        onClick={() => setModalShowUbah(true)}
+                       
                       >
                         Ubah
                       </button>
-                      <button className="btn btn-delete">Hapus</button>
+                      <button className="btn btn-delete"
+                      onClick={() => handleHapusClick(item.id)}
+                      >Hapus</button>
                     </div>
                   </td>
                 </tr>
@@ -224,9 +140,11 @@ const TablePerhitungan = () => {
           </table>
         </div>
       </div>
-      <UbahDataPerhitungan
-        show={modalShowUbah}
-        onHide={() => setModalShowUbah(false)}
+      <HapusDataPerhitungan
+        show={modalShowHapus}
+        onHide={() => setModalShowHapus(false)}
+        id={PerhitunganId}
+        fetchPerhitungan={fetchPerhitungan} 
       />
       <TambahDataPerhitungan
         show={modalShowTambah}

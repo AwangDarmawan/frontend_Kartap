@@ -151,13 +151,14 @@ const TambahDataPerhitungan = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("error kenapa", perhitungan);
     try {
       const response = await addperhitungan(perhitungan);
       if (response.status === "OK") {
         toast.success("Kriteria berhasil ditambahkan!"); 
         props.onHide(); 
       } else {
-        toast.error(response.message || "Terjadi kesalahan saat menambahkan subkriteria."); 
+        toast.error(response.message || "Terjadi kesalahan saat menambahkan data perhitungan."); 
       }
     } catch (error) {
       toast.error("Terjadi kesalahan saat menambahkan subkriteria."); 
@@ -230,24 +231,23 @@ const TambahDataPerhitungan = (props) => {
               ))}
             </Form.Control>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="evaluasi">
+          <Form.Group className="mb-3" controlId="hasil_evaluasi_faktor">
             <Form.Label>Evaluasi Faktor</Form.Label>
             <Form.Control
               as="select"
               className="form-modal-admin"
-              name="evaluasi"
+              name="hasil_evaluasi_faktor"
               value={perhitungan.hasil_evaluasi_faktor}
               onChange={handleChange}
             >
               <option value="">Pilih Evaluasi</option>
               {evaluasiOptions.map(hasil_evaluasi_faktor => (
                 <option key={hasil_evaluasi_faktor.id} value={hasil_evaluasi_faktor.id}>
-                   {hasil_evaluasi_faktor.bobot_subkriteria}
+                 {hasil_evaluasi_faktor.hasil_evaluasi_faktor}
                 </option>
-              ))}
+              ))} 
             </Form.Control>
           </Form.Group>
-          
           <Button className="btn-upload" variant="secondary" onClick={props.onHide}>
             Batal
           </Button>

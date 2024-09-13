@@ -8,7 +8,7 @@ import { addKaryawan } from "../../services/apipersonalia";
 
 const TambahDataKaryawan = (props) => {
   const [dataKaryawan, setDataKaryawan] = useState({
-    id: '',
+    // id: '',
     nip: '',
     nama: '',
     jenis_kelamin: true, 
@@ -54,7 +54,7 @@ const TambahDataKaryawan = (props) => {
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
         <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="id">
+        {/* <Form.Group className="mb-3" controlId="id">
             <Form.Label>ID</Form.Label>
             <Form.Control
               type="text"
@@ -64,7 +64,7 @@ const TambahDataKaryawan = (props) => {
               className="form-modal-admin"
               placeholder="id"
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group className="mb-3" controlId="nip">
             <Form.Label>Nip</Form.Label>
             <Form.Control
