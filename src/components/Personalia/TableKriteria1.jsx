@@ -72,7 +72,6 @@ const TableKriteria1 = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">Id Kriteria</th>
                 <th scope="col">Nama Kriteria</th>
                 <th scope="col">Bobot Persentase</th>
                 <th scope="col">Bobot Faktor</th>
@@ -82,7 +81,6 @@ const TableKriteria1 = () => {
             <tbody className="isi-table">
               {kriteria.map(item => (
                 <tr key={item.id}>
-                  <th scope="row text-kode">K{item.id}</th>
                   <td className="text-kategori">{item.nama_kriteria}</td>
                   <td className="text-nama">{item.bobot_presentase}%</td>
                   <td className="text-nama">{item.bobot_kriteria}</td>

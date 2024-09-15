@@ -14,15 +14,25 @@ const LoginPersonalia = () => {
     e.preventDefault();
     try {
       const data = await AuthPersonalia(username, password);
-      if (data.status === "OK" && data.user.role === 'personalia') {
-        localStorage.setItem('token', data.token);
-        console.log(data.token);
-        navigate('/Data/Karyawan');
-      } 
+      if (data.status === "OK" && data.data.user.role === 'personalia') {
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          console.log(data.token);
+          console.log(data.data.user);
+          navigate('/Data/Karyawan');
+        } else {
+          console.error("Token tidak ditemukan dalam respons.");
+        }
+        
+      } else {
+        console.error("Login gagal atau role bukan personalia.");
+      }
+      
     } catch (error) {
       console.error("Login error:", error);
     }
   };
+  
 
   return (
     <>

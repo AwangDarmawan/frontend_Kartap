@@ -1,12 +1,52 @@
 import "../../styles/Personalia/TableDataKaryawan.css";
-// import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import React from "react";
+import { useState,useEffect } from "react";
+import { getKaryawan,getperangkingan } from "../../services/apipersonalia";
 import Disetujui from "../Modal Manager/Disetujui";
-import Ditolak from "../Modal Manager/Ditolak"
-import { useState } from "react";
+
+
+
 const TableHasil = () => {
   const [modaldisetujui, setModalDisetujui] = useState(false);
-  const [modalditolak, setModalDitolak] = useState(false);
+  const [DataDiangkat, setDataDiangkat] = useState([]);
+  const [DataKaryawan, setDataKaryawan] = useState([]);
+  const [DataDiangkatBYID, setDataDiangkatBYID] = useState([]);
+
+ 
+ const fetchrangking = async () => {
+  try {
+    const karyawanData = await getKaryawan();
+    setDataKaryawan(karyawanData); 
+    
+    const result = await getperangkingan();
+    setDataDiangkat(result.data); 
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+  useEffect(() => {
+    // fetchValidasi();
+    fetchrangking();
+  }, []);
+  const getKaryawanDetails = (karyawanId) => {
+    const karyawan = DataKaryawan.find(k => k.id === karyawanId);
+    if (karyawan) {
+      return { nama: karyawan.nama, nip: karyawan.nip };
+    } else {
+      return { nama: "Nama tidak ditemukan", nip: "NIP tidak ditemukan" }; 
+    }
+  };
+
+  const handleUbahClick = (id) => {
+    console.log("ID yang dikirim:", id);
+    setDataDiangkatBYID(id);
+    setModalDisetujui(true);
+  };
+  const handleUbahClose = () => {
+    setModalDisetujui(false);
+    fetchrangking(); 
+  };
+
   return (
     
     <>
@@ -21,61 +61,55 @@ const TableHasil = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">ID</th>
+              <th scope="col">ID</th>
+                <th scope="col">NIP</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Posisi</th>
-                <th scope="col">Kinerja</th>
-                <th scope="col">Lama Bekerja</th>
-                <th scope="col">Kehadiran</th>
-                <th scope="col">Pengalaman Kerja</th>
-                <th scope="col">Usia</th>
-                <th scope="col">Pendidikan</th>
-                <th scope="col">Total</th>
-                <th scope="col">status</th>
+                <th scope="col">Nilai</th>
+                <th scope="col">Hasil</th>
+                <th scope="col">Keputusan</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
             <tbody className="isi-table">
-              <tr>
-                <th scope="row text-kode">sp123</th>
-                <td className="text-kategori">Alya</td>
-                <td className="text-nama">Wanita</td>
-                <td className="text-nama">Staff Pemasaran</td>
-                <td className="text-nama">Mencapai Target<br></br>(1)</td>
-                <td className="text-nama">3 bulan <br></br>(0.5)</td>
-                <td className="text-nama">100% <br></br>(0.5)</td>
-                <td className="text-nama">Fresh Graduate<br></br>(0.5)</td>
-                <td className="text-nama">23 tahun <br></br> (1)</td>
-                <td className="text-nama">S1 <br></br>(1)</td>
-                <td className="text-nama">1</td>
-                <td className="text-nama">diangkat</td>    
-                <td className="aksi-btn ">
-                  <div className="btn-wrapper d-flex gap-2">
-                    <button
-                      className=" btn btn-create "
-                      onClick={() => setModalDisetujui(true)}
-                    >
-                      setujui
-                    </button>
-                    <button className=" btn btn-delete"
-                     onClick={() => setModalDitolak(true)}>
-                      Di tolak</button>
-                  </div>
-                </td>
-              </tr>
+              {DataDiangkat.filter(item => item.keputusan_diangkat).map((item) => { // Filter hanya yang diangkat
+                const { nama, nip } = getKaryawanDetails(item.karyawan); // Ambil nama dan NIP karyawan
+                return (
+                  <tr key={item.id}>
+                     <td className="text-kategori">{item.id}</td>
+                    <td className="text-kategori">{nip}</td>
+                    <td className="text-kategori">{nama}</td>
+                    <td className="text-nama">{item.nilai_perangkingan}</td>
+                    <td className={`text-kategori ${item.keputusan_diangkat ? 'text-primary' : 'text-danger'}`}>
+                      {item.keputusan_diangkat ? "Diangkat" : "Tidak"}
+                    </td>
+                    <td className={`text-kategori ${item.validasi_manager ? 'text-primary' : 'text-danger'}`}>
+                      {item.validasi_manager ? "Disetujui" : "ditolak"}
+                    </td>
+                  <td className="aksi-btn">
+                    <div className="btn-wrapper d-flex gap-2">
+                      <button
+                        className={`btn btn-create ${item.validasi_manager ? 'btn-primary' : 'btn-outline-primary'}`} onClick={() => handleUbahClick(item.id)}
+                  
+                      >
+                        setujui
+                      </button>
+                     
+                    </div>
+                  </td>
+
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       </div>
       <Disetujui
         show={modaldisetujui}
-        onHide={() => setModalDisetujui(false)}
+        id={DataDiangkatBYID}
+        onHide={handleUbahClose} 
       />
-         <Ditolak
-        show={modalditolak}
-        onHide={() => setModalDitolak(false)}
-      />
+        
     </>
   );
 };

@@ -120,10 +120,14 @@ const UbahDataKaryawan = (props) => {
               value={dataKaryawan.posisi}
               onChange={handleChange}
             >
-              <option value="">Pilih Posisi</option>
-              <option value="karyawan_biasa">Karyawan Biasa</option>
-              <option value="personalia">Personalia</option>
-              <option value="manager">Manager</option>
+             <option value="">Pilih Posisi</option>
+              <option value="manager pemasaran">manager pemasaran</option>
+              <option value="manager keuangan">manager keuangan</option>
+              <option value="manager operasional">manager operasional</option>
+              <option value="staff pemasaran">staff pemasaran</option>
+              <option value="staff keuangan">staff keuangan</option>
+              <option value="staff logistik">staff logistik</option>
+              <option value="staff maintenance">staff maintenance</option>
             </Form.Select>
           </Form.Group>
           <Button className="btn-upload" variant="secondary" onClick={props.onHide}>

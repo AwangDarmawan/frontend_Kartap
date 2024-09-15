@@ -10,6 +10,7 @@ const HapusKaryawan = ({ id, onHide, fetchData, ...props }) => {
   const handleDelete = async () => {
     try {
       await deleteKaryawan(id);
+      console.log("id delete",id)
       fetchData(); 
       onHide(); 
       toast.success("Karyawan removed successfully");

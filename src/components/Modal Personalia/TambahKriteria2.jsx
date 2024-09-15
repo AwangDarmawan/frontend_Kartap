@@ -136,7 +136,7 @@ const TambahKriteria2 = (props) => {
     const fetchKriteria = async () => {
       try {
         const kriteriaData = await getallKriteria();
-        setKriteriaList(kriteriaData.data); // Sesuaikan dengan struktur data respons API Anda
+        setKriteriaList(kriteriaData.data); 
       } catch (error) {
         toast.error("Terjadi kesalahan saat memuat data kriteria.");
       }

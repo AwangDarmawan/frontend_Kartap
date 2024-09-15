@@ -9,7 +9,7 @@ export const AuthPersonalia = async (username, password) => {
   try {
     const response = await axios.post(`${baseUrl}/login`, { username, password });
     console.log('Login response:', response.data);
-    if (response.data.status === "OK" && response.data.user.role === 'personalia') {
+    if (response.data.status === "OK" && response.data.data.user.role === 'personalia') {
       toast.success(response.data.message);
       return response.data;
     } else {
@@ -178,9 +178,10 @@ export const updateKaryawan = async (id, dataKaryawan) => {
 export const addKaryawan = async (dataKaryawan) => {
   try {
     const response = await axios.post(`${baseUrl}/karyawan`,dataKaryawan);
+    console.log("error add",response.data)
     return response.data;
   } catch (error) {
-    console.error("Error adding subkriteria:", error);
+    console.error("Error adding add karyawan:", error);
     throw error;
   }
 };
@@ -188,7 +189,7 @@ export const addKaryawan = async (dataKaryawan) => {
 //Hapus Karyawan
 export const deleteKaryawan = async (id) => {
   try {
-    const response = await axios.delete(`${baseUrl}/karyawan/${id}`);
+    const response = await axios.delete(`${baseUrl}/akun/${id}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -211,15 +212,6 @@ export const getallAkun = async () => {
     }
   } catch (error) {
     console.error("There was an error fetching the data!", error);
-    throw error;
-  }
-};
-//delete akun 
-export const deleteAkun = async (id) => {
-  try {
-    const response = await axios.delete(`${baseUrl}/akun/${id}`);
-    return response.data;
-  } catch (error) {
     throw error;
   }
 };

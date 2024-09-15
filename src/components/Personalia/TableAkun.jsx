@@ -1,13 +1,10 @@
 import { useState,useEffect } from "react";
-import "../../styles/Personalia/TableDataKaryawan.css";
-
+import "../../styles/Personalia/TableAkun.css";
 import VerifikasiSandiLama from "../Modal Personalia/VerifikasiSandiLama";
-import HapusAkun from "../Modal Personalia/HapusAkun";
 import { getallAkun } from "../../services/apipersonalia";
 
 const TableAkun = () => {
   const [modalShowUbah, setModalShowUbah] = useState(false);
-  const [modalShowHapus, setModalShowHapus] = useState(false);
   const [akun, setAkun] = useState([]);
   const [AkunId, setAkunId] = useState(null);
 
@@ -29,11 +26,6 @@ const TableAkun = () => {
     setAkunId(id);
     setModalShowUbah(true);
   };
-
-  const handleHapusClick = (id) => {
-    setAkunId(id);
-    setModalShowHapus(true);
-  };
   return (
     <>
       <div>
@@ -48,7 +40,6 @@ const TableAkun = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">ID</th>
                 <th scope="col">NIP</th>
                 <th scope="col">Password</th>
                 <th scope="col">Posisi</th>
@@ -58,9 +49,8 @@ const TableAkun = () => {
             <tbody className="isi-table">
             {akun.map(item => (
                 <tr key={item.id}>
-                  <th scope="row text-kode">{item.id}</th>
                   <td className="text-kategori">{item.username}</td>
-                  <td className="text-nama">{item.password}</td>
+                  <td className="text-kategori">******</td>
                   <td className="text-kategori">{item.role}</td>
                   <td className="aksi-btn ">
                     <div className="btn-wrapper d-flex gap-2">
@@ -70,12 +60,6 @@ const TableAkun = () => {
                       >
                         Ubah
                       </button>
-                      <button
-                         className="btn btn-delete"
-                        onClick={() => handleHapusClick(item.id)}
-                          >
-                             Hapus
-                        </button>
                     </div>
                   </td>
                 </tr>
@@ -89,12 +73,7 @@ const TableAkun = () => {
         onHide={() => setModalShowUbah(false)}
         id={AkunId}
       />
-      <HapusAkun
-        show={modalShowHapus}
-        onHide={() => setModalShowHapus(false)}
-        id={AkunId}
-        fetchAkun={fetchAkun} 
-        />
+      
     </>
   );
 };

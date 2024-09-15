@@ -9,20 +9,29 @@ const LoginManager = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
+    
     const loginHandler = async (e) => {
-        e.preventDefault();
-        try {
-          const data = await AuthManager(username, password);
-          if (data.status === "OK" && data.user.role === 'manager') {
+      e.preventDefault();
+      try {
+        const data = await AuthManager(username, password);
+        if (data.status === "OK" && data.data.user.role === 'manager') {
+          if (data.token) {
             localStorage.setItem('token', data.token);
             console.log(data.token);
+            console.log(data.data.user);
             navigate('/Data/Hasil');
-          } 
-        } catch (error) {
-          console.error("Login error:", error);
+          } else {
+            console.error("Token tidak ditemukan dalam respons.");
+          }
+          
+        } else {
+          console.error("Login gagal atau role bukan personalia.");
         }
-      };
+        
+      } catch (error) {
+        console.error("Login error:", error);
+      }
+    };
     
     return (
         <>

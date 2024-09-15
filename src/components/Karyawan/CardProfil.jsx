@@ -16,7 +16,6 @@ const CardProfil = () => {
             <Col md={5}>
               <SideBarAkun />
             </Col>
-
             <Col md={7}>
               <Container className="px-4">
                 <FormProfil />

@@ -69,22 +69,22 @@ const TableDataKaryawan = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                {/* <th scope="col">ID</th> */}
                 <th scope="col">Nip</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Posisi</th>
+                <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
             <tbody className="isi-table">
             {dataKaryawan.map((karyawan) => (
                 <tr key={karyawan.id}>
-                  {/* <th scope="row" className="text-kode">{karyawan.id}</th> */}
                   <td className="text-kategori">{karyawan.nip}</td>
                   <td className="text-kategori">{karyawan.nama}</td>
                   <td className="text-nama">{karyawan.jenis_kelamin ? "Pria" : "Wanita"}</td>
                   <td className="text-nama">{karyawan.posisi}</td>
+                  <th className="text-kode">{karyawan.status}</th>
                   <td className="aksi-btn ">
                     <div className="btn-wrapper d-flex gap-2">
                       <button

@@ -16,14 +16,20 @@ const LoginKaryawan = () => {
     e.preventDefault();
     try {
       const data = await AuthKaryawan(username, password);
-      if (data.status === "OK" && data.user.role === 'karyawan') {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('karyawanID', data.user.id);
-        localStorage.setItem('karyawanUsername', data.user.username);
-        console.log(data.token);
-        console.log('id',data.user.id);
+      if (data.status === "OK" && data.data.user.role === 'karyawan') {
+        localStorage.setItem('token', data.token);  
+        localStorage.setItem('karyawanID', data.data.user.id);  
+        localStorage.setItem('karyawanUsername', data.data.user.username);  
+
+        localStorage.setItem('nipKaryawan', data.data.karyawan.nip); 
+        localStorage.setItem('namaKaryawan', data.data.karyawan.nama);   
+        localStorage.setItem('genderKaryawan', data.data.karyawan.jenis_kelamin);  
+        localStorage.setItem('posisiKaryawan', data.data.karyawan.posisi); 
+        localStorage.setItem('statusKaryawan', data.data.karyawan.status);   
         navigate('/Home/Karyawan');
-      } 
+      } else {
+        toast.error('Login failed or user is not a karyawan');
+      }
     } catch (error) {
       console.error("Login error:", error);
     }

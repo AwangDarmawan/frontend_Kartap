@@ -4,15 +4,15 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../../styles/Personalia/TambahDataKaryawan.css";
 import { toast } from 'react-toastify'; 
-import { addKaryawan } from "../../services/apipersonalia";
+import { addKaryawan} from "../../services/apipersonalia";
 
 const TambahDataKaryawan = (props) => {
   const [dataKaryawan, setDataKaryawan] = useState({
-    // id: '',
     nip: '',
     nama: '',
     jenis_kelamin: true, 
-    posisi: ''
+    posisi: '',
+
   });
 
   const handleChange = (e) => {
@@ -22,6 +22,9 @@ const TambahDataKaryawan = (props) => {
       [name]: name === 'jenis_kelamin' ? value === 'Pria' : value
     }));
   };
+
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,10 +33,10 @@ const TambahDataKaryawan = (props) => {
         toast.success("Data berhasil ditambahkan!"); 
         props.onHide(); 
       } else {
-        toast.error(response.message || "Terjadi kesalahan saat menambahkan kriteria."); 
+        toast.error(response.message || "Terjadi kesalahan saat menambahkan Karyawan."); 
       }
     } catch (error) {
-      toast.error("Terjadi kesalahan saat menambahkan kriteria."); 
+      toast.error("Terjadi kesalahan saat menambahkan karyawan."); 
     }
   };
   return (
@@ -54,17 +57,6 @@ const TambahDataKaryawan = (props) => {
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
         <Form onSubmit={handleSubmit}>
-        {/* <Form.Group className="mb-3" controlId="id">
-            <Form.Label>ID</Form.Label>
-            <Form.Control
-              type="text"
-              name="id"
-              value={dataKaryawan.id}
-              onChange={handleChange}
-              className="form-modal-admin"
-              placeholder="id"
-            />
-          </Form.Group> */}
           <Form.Group className="mb-3" controlId="nip">
             <Form.Label>Nip</Form.Label>
             <Form.Control
@@ -108,9 +100,14 @@ const TambahDataKaryawan = (props) => {
               onChange={handleChange}
             >
               <option value="">Pilih Posisi</option>
-              <option value="karyawan_biasa">Karyawan Biasa</option>
-              <option value="personalia">Personalia</option>
-              <option value="manager">Manager</option>
+              <option value="manager pemasaran">manager pemasaran</option>
+              <option value="manager keuangan">manager keuangan</option>
+              <option value="manager operasional">manager operasional</option>
+              <option value="staff pemasaran">staff pemasaran</option>
+              <option value="staff keuangan">staff keuangan</option>
+              <option value="staff logistik">staff logistik</option>
+              <option value="staff maintenance">staff maintenance</option>
+              
             </Form.Select>
           </Form.Group>
           <Button className="btn-upload" variant="secondary" onClick={props.onHide}>

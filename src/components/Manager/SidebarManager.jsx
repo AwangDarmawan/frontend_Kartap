@@ -16,7 +16,7 @@ const SidebarManager = () => {
       <div className="sidebar-admin-menu">
       <Link to={"/Data/Hasil"} className="sidebar-admin-item">
           <FaUser className="item-icon" />
-          <p className="item">data diangkat </p>
+          <p className="item">data </p>
         </Link>
         <Link to={"/Manager"} className="sidebar-admin-item">
           <FaSignOutAlt className="item-icon" />
