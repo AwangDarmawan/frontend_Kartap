@@ -15,11 +15,11 @@ const Caoursel = () => {
             src={caursel1}
             alt="First slide"
           />
-          <Carousel.Caption className="carousel-caption-custom">
-            <h1 className="carousel-heading text-white mb-3 mb-md-4">
+          <Carousel.Caption className="carousel-caption-custom text-white">
+            <h1 className="carousel-heading mb-3 mb-md-4 text-bg-primary">
               PT INDONESIA PROJEK LOGISTIK
             </h1>
-            <p className="carousel-text text-white mb-4 mb-md-5">
+            <p className="carousel-text  mb-4 mb-md-5 text-bg-primary">
               PT Indonesia Projek Logistik memiliki dua jenis karyawan, yakni karyawan kontrak dan karyawan tetap.
             </p>
             <a
@@ -36,11 +36,11 @@ const Caoursel = () => {
             src={caursel2}
             alt="Second slide"
           />
-          <Carousel.Caption className="carousel-caption-custom">
-          <h1 className="carousel-heading text-white mb-3 mb-md-4">
+          <Carousel.Caption className="carousel-caption-custom text-white">
+          <h1 className="carousel-heading text-white mb-3 mb-md-4 text-bg-primary">
               PT INDONESIA PROJEK LOGISTIK
             </h1>
-            <p className="carousel-text text-white mb-4 mb-md-5">
+            <p className="carousel-text text-white mb-4 mb-md-5 text-bg-primary">
               PT Indonesia Projek Logistik sendiri memiliki dua jenis karyawan, yakni karyawan kontrak dan karyawan tetap.
             </p>
             <a

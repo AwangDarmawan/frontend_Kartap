@@ -7,7 +7,7 @@ const FormProfil = () => {
   // const karyawanID = localStorage.getItem('karyawanID');
   const namaKaryawan = localStorage.getItem('namaKaryawan');
   const nipKaryawan = localStorage.getItem('nipKaryawan');
-  const genderKaryawan = localStorage.getItem('genderKaryawan');
+  const genderKaryawan = localStorage.getItem('genderKaryawan') === 'true'; 
   const posisiKaryawan = localStorage.getItem('posisiKaryawan');
   const statusKaryawan = localStorage.getItem('statusKaryawan');
   return (

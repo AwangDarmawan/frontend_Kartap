@@ -1,10 +1,13 @@
 
 import { useState, useEffect } from "react";
 import { getperangkingan, getKaryawan } from "../../services/apipersonalia";
+import HapusHasilPerhitungan from "../Modal Personalia/HapusHasilPerhitungan";
 
 const TableHasilPerhitungan = () => {
+  const [modalShowHapus, setModalShowHapus] = useState(false);;
   const [Rangking, setRangking] = useState([]);
   const [dataKaryawan, setDataKaryawan] = useState([]);
+  const [RangkingId, setRankingId] = useState(null);
 
   // Fetch data karyawan dan perangkingan
   const fetchrangking = async () => {
@@ -22,6 +25,12 @@ const TableHasilPerhitungan = () => {
   useEffect(() => {
     fetchrangking();
   }, []);
+
+  const handleHapusClick = (id) => {
+    console.log("Hapus:", id);
+    setRankingId(id);
+    setModalShowHapus(true);
+  };
 
   // Fungsi untuk mencocokkan ID karyawan di perangkingan dengan data karyawan
   const getKaryawanDetails = (karyawanId) => {
@@ -49,6 +58,7 @@ const TableHasilPerhitungan = () => {
                 <th scope="col">Nama Karyawan</th>
                 <th scope="col">Nilai</th>
                 <th scope="col">Hasil Perhitungan</th>
+                <th scope="col">Aksi</th>
               </tr>
             </thead>
             <tbody className="isi-table">
@@ -62,6 +72,15 @@ const TableHasilPerhitungan = () => {
                     <td className={`text-kategori ${item.keputusan_diangkat ? 'text-primary' : 'text-danger'}`}>
                       {item.keputusan_diangkat ? "Diangkat" : "Tidak"}
                     </td>
+
+                  <td className="aksi-btn">
+                    <div className="btn-wrapper d-flex gap-2">
+                
+                      <button className="btn btn-delete"
+                      onClick={() => handleHapusClick(item.id)}
+                      >Hapus</button>
+                    </div>
+                  </td>
                   </tr>
                 );
               })}
@@ -69,6 +88,13 @@ const TableHasilPerhitungan = () => {
           </table>
         </div>
       </div>
+
+      <HapusHasilPerhitungan
+        show={modalShowHapus}
+        onHide={() => setModalShowHapus(false)}
+        id={RangkingId}
+        fetchrangking={fetchrangking} 
+        />
     </>
   );
 };

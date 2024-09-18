@@ -252,6 +252,17 @@ export const getperangkingan  = async () => {
   }
 };
 
+//Hapus Karyawan
+export const deleteperangkingan = async (id) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/perankingan/${id}`);
+    console.log("hapus", response.data)
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 /* ============ */
 /* === Perhitungan === */

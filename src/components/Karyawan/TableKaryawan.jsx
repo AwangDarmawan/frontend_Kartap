@@ -114,7 +114,7 @@ const TableKaryawan = () => {
             <table className="table mt-3">
               <thead className="table-primary">
                 <tr className="header-table">
-                  <th scope="col">ID</th>
+                  {/* <th scope="col">ID</th> */}
                   <th scope="col">NIP</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Kriteria</th>
@@ -127,7 +127,7 @@ const TableKaryawan = () => {
                   const { nama, nip, perhitungan } = getKaryawanDetails(item.karyawan, item.kriteria, item.subkriteria,); // Ambil nama, NIP, dan perhitungan karyawan
                   return (
                     <tr key={item.id}>
-                      <th scope="row" className="text-kode">{item.id}</th>
+                      {/* <th scope="row" className="text-kode">{item.id}</th> */}
                       <td className="text-kategori">{nip}</td>
                       <td className="text-kategori">{nama}</td>
                       <td className="text-kategori">

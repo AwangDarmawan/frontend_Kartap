@@ -25,7 +25,7 @@ const TableHasil = () => {
   }
 };
   useEffect(() => {
-    // fetchValidasi();
+ 
     fetchrangking();
   }, []);
   const getKaryawanDetails = (karyawanId) => {
@@ -61,12 +61,12 @@ const TableHasil = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-              <th scope="col">ID</th>
+              {/* <th scope="col">ID</th> */}
                 <th scope="col">NIP</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Nilai</th>
                 <th scope="col">Hasil</th>
-                <th scope="col">Keputusan</th>
+                <th scope="col">Keputusan Manager</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
@@ -75,7 +75,7 @@ const TableHasil = () => {
                 const { nama, nip } = getKaryawanDetails(item.karyawan); // Ambil nama dan NIP karyawan
                 return (
                   <tr key={item.id}>
-                     <td className="text-kategori">{item.id}</td>
+                     {/* <td className="text-kategori">{item.id}</td> */}
                     <td className="text-kategori">{nip}</td>
                     <td className="text-kategori">{nama}</td>
                     <td className="text-nama">{item.nilai_perangkingan}</td>

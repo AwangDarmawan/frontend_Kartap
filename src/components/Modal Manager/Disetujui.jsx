@@ -66,20 +66,7 @@ const Disetujui = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
-        <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="id">
-            <Form.Label>Nip</Form.Label>
-            <Form.Control
-              type="text"
-              name="id"
-              value={disetujui.id}
-              className="form-modal-admin"
-              placeholder="id"
-              readOnly
-              disabled
-            />
-          </Form.Group>
-          
+        <Form onSubmit={handleSubmit}> 
           <Form.Group className="mb-3" controlId="validasi_manager">
             <Form.Label>Jenis Kelamin</Form.Label>
             <Form.Select

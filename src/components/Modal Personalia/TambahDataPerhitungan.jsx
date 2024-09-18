@@ -83,6 +83,7 @@ const TambahDataPerhitungan = (props) => {
       const response = await addperhitungan(perhitungan);
       if (response.status === "OK") {
         toast.success("Kriteria berhasil ditambahkan!"); 
+        window.location.reload()
         props.onHide(); 
       } else {
         toast.error(response.message || "Terjadi kesalahan saat menambahkan data perhitungan."); 

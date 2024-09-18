@@ -123,12 +123,7 @@ const TablePerhitungan = () => {
                   <td className="text-nama">{item.hasil_perhitungan}</td>
                   <td className="aksi-btn">
                     <div className="btn-wrapper d-flex gap-2">
-                      <button
-                        className="btn btn-create"
-                       
-                      >
-                        Ubah
-                      </button>
+                
                       <button className="btn btn-delete"
                       onClick={() => handleHapusClick(item.id)}
                       >Hapus</button>
