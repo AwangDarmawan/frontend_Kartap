@@ -17,10 +17,10 @@ const LoginKaryawan = () => {
     try {
       const data = await AuthKaryawan(username, password);
       if (data.status === "OK" && data.data.user.role === 'karyawan') {
-        localStorage.setItem('token', data.token);  
+        localStorage.setItem('KaryawanToken', data.token);  
         localStorage.setItem('karyawanID', data.data.user.id);  
-        localStorage.setItem('karyawanUsername', data.data.user.username);  
-
+        localStorage.setItem('karyawanUsername', data.data.user.username); 
+        
         localStorage.setItem('nipKaryawan', data.data.karyawan.nip); 
         localStorage.setItem('namaKaryawan', data.data.karyawan.nama);   
         localStorage.setItem('genderKaryawan', data.data.karyawan.jenis_kelamin);  

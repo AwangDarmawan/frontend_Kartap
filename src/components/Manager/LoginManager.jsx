@@ -16,7 +16,7 @@ const LoginManager = () => {
         const data = await AuthManager(username, password);
         if (data.status === "OK" && data.data.user.role === 'manager') {
           if (data.token) {
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('managerToken', data.token);
             console.log(data.token);
             console.log(data.data.user);
             navigate('/Data/Hasil');

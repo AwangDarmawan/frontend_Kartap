@@ -5,11 +5,10 @@ import { deleteKaryawan } from "../../services/apipersonalia";
 import { toast } from "react-toastify";
 
 const HapusKaryawan = ({ id, onHide, fetchData, ...props }) => {
- 
-
   const handleDelete = async () => {
+    const token = localStorage.getItem('authToken');
     try {
-      await deleteKaryawan(id);
+      await deleteKaryawan(id,token);
       console.log("id delete",id)
       fetchData(); 
       onHide(); 

@@ -9,8 +9,9 @@ import { toast } from "react-toastify";
 const HapusKriteria1 = ({ id, onHide, fetchKriteria, ...props }) => {
  
   const handleDelete = async () => {
+    const token = localStorage.getItem('authToken');
     try {
-      const response = await deleteKriteria(id);
+      const response = await deleteKriteria(id,token);
       if (response.message.includes("violates foreign key constraint")) {
         toast.error("data is still related");
         console.error(response.message)

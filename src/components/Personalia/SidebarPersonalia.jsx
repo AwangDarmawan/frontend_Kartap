@@ -40,7 +40,7 @@ const SidebarPersonalia = () => {
           <FaSignOutAlt className="item-icon" />
           <p className="item"
             onClick={() => {
-              localStorage.removeItem("token");
+              localStorage.removeItem("authToken");
               window.location.href = "/Personalia";
             }}>Keluar</p>
         </Link>

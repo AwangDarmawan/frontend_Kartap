@@ -7,8 +7,9 @@ import { toast } from "react-toastify";
 
 const HapusHasilPerhitungan = ({id, onHide, fetchrangking, ...props}) => {
   const handleDelete = async () => {
+    const token = localStorage.getItem('authToken');
     try {
-      await deleteperangkingan(id);
+      await deleteperangkingan(id,token);
       fetchrangking(); 
       onHide(); 
       toast.success("Hasil Di Hapus");

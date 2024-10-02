@@ -1,12 +1,10 @@
 import { useState,useEffect } from "react";
 import "../../styles/Personalia/TableAkun.css";
-import VerifikasiSandiLama from "../Modal Personalia/VerifikasiSandiLama";
+
 import { getallAkun } from "../../services/apipersonalia";
 
 const TableAkun = () => {
-  const [modalShowUbah, setModalShowUbah] = useState(false);
   const [akun, setAkun] = useState([]);
-  const [AkunId, setAkunId] = useState(null);
 
   const fetchAkun = async () => {
     try {
@@ -21,11 +19,6 @@ const TableAkun = () => {
     fetchAkun();
   }, []);
 
-  const handleUbahClick = (id) => {
-    console.log("ID yang dikirim:", id);
-    setAkunId(id);
-    setModalShowUbah(true);
-  };
   return (
     <>
       <div>
@@ -42,8 +35,7 @@ const TableAkun = () => {
               <tr className="header-table">
                 <th scope="col">NIP</th>
                 <th scope="col">Password</th>
-                <th scope="col">Posisi</th>
-                <th scope="col">Aksi</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody className="isi-table">
@@ -52,27 +44,12 @@ const TableAkun = () => {
                   <td className="text-kategori">{item.username}</td>
                   <td className="text-kategori">******</td>
                   <td className="text-kategori">{item.role}</td>
-                  <td className="aksi-btn ">
-                    <div className="btn-wrapper d-flex gap-2">
-                      <button
-                        className=" btn btn-create "
-                        onClick={() => handleUbahClick(item.id)}
-                      >
-                        Ubah
-                      </button>
-                    </div>
-                  </td>
                 </tr>
             ))}
             </tbody>
           </table>
         </div>
       </div>
-      <VerifikasiSandiLama
-        show={modalShowUbah}
-        onHide={() => setModalShowUbah(false)}
-        id={AkunId}
-      />
       
     </>
   );

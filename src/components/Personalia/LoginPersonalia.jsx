@@ -16,7 +16,7 @@ const LoginPersonalia = () => {
       const data = await AuthPersonalia(username, password);
       if (data.status === "OK" && data.data.user.role === 'personalia') {
         if (data.token) {
-          localStorage.setItem('token', data.token);
+          localStorage.setItem('authToken', data.token);
           console.log(data.token);
           console.log(data.data.user);
           navigate('/Data/Karyawan');

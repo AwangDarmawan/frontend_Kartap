@@ -13,7 +13,8 @@ import DataPerhitungan from "./pages/Personalia/DataPerhitungan";
 import Informasi from "./pages/Personalia/Informasi";
 import DataAkun from "./pages/Personalia/DataAkun";
 import DataHasil from "./pages/Manager/DataHasilKaryawan";
-import UbahPassword from "./pages/Karyawan/Password"
+import UbahPassword from "./pages/Karyawan/Password";
+import Keterangan from "./pages/Karyawan/Keterangan"
 function App() {
 
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="/Ubah-Password" element={<UbahPassword/>} />
           <Route path="/Home/Karyawan" element={<HomeKaryawan/>}/>
           <Route path="/DataTableKaryawan" element={<DataTableKaryawan/>} />
-
+          <Route path="/Keterangan" element={<Keterangan/>} />
 
            {/* Personalia */}
           <Route path="/Personalia" element={<LoginPersonalia/>}/>

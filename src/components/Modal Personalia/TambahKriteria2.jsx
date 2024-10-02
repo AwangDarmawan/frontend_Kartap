@@ -155,8 +155,9 @@ const TambahKriteria2 = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('authToken');
     try {
-      const response = await addSubKriteria(subkriteria);
+      const response = await addSubKriteria(subkriteria, token);
       if (response.status === "OK") {
         toast.success("Kriteria berhasil ditambahkan!"); 
         props.onHide(); 

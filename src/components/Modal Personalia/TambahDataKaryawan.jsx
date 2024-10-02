@@ -27,8 +27,9 @@ const TambahDataKaryawan = (props) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('authToken');
     try {
-      const response = await addKaryawan(dataKaryawan); 
+      const response = await addKaryawan(dataKaryawan,token); 
       if (response.status === "OK") {
         toast.success("Data berhasil ditambahkan!"); 
         props.onHide(); 

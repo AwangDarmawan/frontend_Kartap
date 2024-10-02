@@ -15,6 +15,7 @@ const UbahDataKaryawan = (props) => {
     posisi: ''
   });
   useEffect(() => {
+    
     if (props.id) {
       fetchKaryawanById(props.id)
         .then(data => {

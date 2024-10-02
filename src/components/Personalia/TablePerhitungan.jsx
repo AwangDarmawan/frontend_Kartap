@@ -1,11 +1,12 @@
 
 
+
 import { useState, useEffect } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 import addBtn from "../../assets/gala_add.svg";
 import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
 import HapusDataPerhitungan from "../Modal Personalia/HapusDataPerhitungan";
-import { getPerhitungan, getallKriteria, getallSubKriteria,getKaryawan } from "../../services/apipersonalia";
+import { getPerhitungan, getallKriteria, getallSubKriteria, getKaryawan, getallEvaluasi } from "../../services/apipersonalia";
 
 const TablePerhitungan = () => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
@@ -13,40 +14,26 @@ const TablePerhitungan = () => {
   const [perhitungan, setPerhitungan] = useState([]);
   const [kriteria, setKriteria] = useState([]);
   const [subkriteria, setSubkriteria] = useState([]);
+  const [evaluasi, setEvaluasi] = useState([]);
   const [karyawan, setKaryawan] = useState([]);
   const [PerhitunganId, setPerhitunganId] = useState(null);
 
   const fetchPerhitungan = async () => {
     try {
-      const result = await getPerhitungan();
-      setPerhitungan(result.data);
-    } catch (error) {
-      console.error("Error fetching perhitungan:", error);
-    }
-  };
+      const hitung = await getPerhitungan();
+      setPerhitungan(hitung.data);
 
-  const fetchkaryawan = async () => {
-    try {
-      const result = await getKaryawan();
-      setKaryawan(result);
-    } catch (error) {
-      console.error("Error fetching perhitungan:", error);
-    }
-  };
+      const kry = await getKaryawan();
+      setKaryawan(kry);
 
-  const fetchKriteria = async () => {
-    try {
-      const result = await getallKriteria();
-      setKriteria(result.data);
-    } catch (error) {
-      console.error("Error fetching kriteria:", error);
-    }
-  };
+      const krt = await getallKriteria();
+      setKriteria(krt.data);
 
-  const fetchSubkriteria = async () => {
-    try {
-      const result = await getallSubKriteria();
-      setSubkriteria(result);
+      const sub = await getallSubKriteria();
+      setSubkriteria(sub);
+
+      const ev = await getallEvaluasi();
+      setEvaluasi(ev.data);
     } catch (error) {
       console.error("Error fetching subkriteria:", error);
     }
@@ -54,9 +41,6 @@ const TablePerhitungan = () => {
 
   useEffect(() => {
     fetchPerhitungan();
-    fetchkaryawan();
-    fetchKriteria();
-    fetchSubkriteria();
   }, []);
 
   const getKriteriaName = (id) => {
@@ -68,33 +52,43 @@ const TablePerhitungan = () => {
     const item = subkriteria.find(s => s.id === id);
     return item ? item.nama_subkriteria : "Tidak ada data";
   };
+
   const getKaryawanName = (id) => {
     const item = karyawan.find(s => s.id === id);
     return item ? item.nama : "Tidak ada data";
   };
+
   const getKaryawanNIP = (id) => {
     const item = karyawan.find(s => s.id === id);
     return item ? item.nip : "Tidak ada data";
   };
 
   const handleHapusClick = (id) => {
-    console.log("Hapus:", id);
     setPerhitunganId(id);
     setModalShowHapus(true);
   };
-  
+
+  // Mengelompokkan perhitungan berdasarkan NIP
+  const groupPerhitunganByNIP = () => {
+    return perhitungan.reduce((acc, item) => {
+      const nip = getKaryawanNIP(item.karyawan);
+      if (!acc[nip]) {
+        acc[nip] = [];
+      }
+      acc[nip].push(item);
+      return acc;
+    }, {});
+  };
+
+  const groupedPerhitungan = groupPerhitunganByNIP();
 
   return (
     <>
       <div>
-        {/* Header  */}
         <div className="header">
           <h3 className="header-title my-0">Data Perhitungan</h3>
           <div className="atribut">
-            <button
-              className="btn-tambah"
-              onClick={() => setModalShowTambah(true)}
-            >
+            <button className="btn-tambah" onClick={() => setModalShowTambah(true)}>
               <img src={addBtn} alt="" className="pe-2 img-tambah" />
               Tambah
             </button>
@@ -105,7 +99,7 @@ const TablePerhitungan = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-              <th scope="col">NIP</th>
+                <th scope="col">NIP</th>
                 <th scope="col">Karyawan</th>
                 <th scope="col">Kriteria</th>
                 <th scope="col">Subkriteria</th>
@@ -114,40 +108,47 @@ const TablePerhitungan = () => {
               </tr>
             </thead>
             <tbody className="isi-table">
-              {perhitungan.map(item => (
-                <tr key={item.id}>
-                  <td className="text-kategori">{getKaryawanNIP(item.karyawan)}</td>
-                  <td className="text-kategori">{getKaryawanName(item.karyawan)}</td>
-                  <td className="text-nama">{getKriteriaName(item.kriteria)}</td>
-                  <td className="text-nama">{getSubKriteriaName(item.subkriteria)}</td>
-                  <td className="text-nama">{item.hasil_perhitungan}</td>
-                  <td className="aksi-btn">
-                    <div className="btn-wrapper d-flex gap-2">
-                
-                      <button className="btn btn-delete"
-                      onClick={() => handleHapusClick(item.id)}
-                      >Hapus</button>
-                    </div>
-                  </td>
-                </tr>
+              {Object.keys(groupedPerhitungan).map(nip => (
+                groupedPerhitungan[nip].map((item, index) => (
+                  <tr key={item.id}>
+                    {index === 0 && (
+                      <>
+                        <td rowSpan={groupedPerhitungan[nip].length} className="text-kategori">{nip}</td>
+                        <td rowSpan={groupedPerhitungan[nip].length} className="text-kategori">{getKaryawanName(item.karyawan)}</td>
+                      </>
+                    )}
+                    <td className="text-nama">{getKriteriaName(item.kriteria)}</td>
+                    <td className="text-nama">{getSubKriteriaName(item.hasil_evaluasi_faktor)}</td>
+                    <td className="text-nama">{item.hasil_perhitungan}</td>
+                    {index === 0 && (
+                      <td rowSpan={groupedPerhitungan[nip].length} className="aksi-btn">
+                        <div className="btn-wrapper d-flex gap-2">
+                          <button className="btn btn-delete" onClick={() => handleHapusClick(item.id)}>
+                            Hapus
+                          </button>
+                        </div>
+                      </td>
+                    )}
+                  </tr>
+                ))
               ))}
             </tbody>
           </table>
         </div>
       </div>
+
       <HapusDataPerhitungan
         show={modalShowHapus}
         onHide={() => setModalShowHapus(false)}
         id={PerhitunganId}
-        fetchPerhitungan={fetchPerhitungan} 
+        fetchPerhitungan={fetchPerhitungan}
       />
-      <TambahDataPerhitungan
-        show={modalShowTambah}
-        onHide={() => setModalShowTambah(false)}
-      />
+      <TambahDataPerhitungan show={modalShowTambah} onHide={() => setModalShowTambah(false)} />
     </>
   );
 };
 
 export default TablePerhitungan;
+
+
 

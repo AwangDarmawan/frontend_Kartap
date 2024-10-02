@@ -12,11 +12,16 @@ const VerifikasiSandiLama = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('authToken'); 
+
     try {
       const response = await axios.post(
         `http://localhost:8000/api/v1/akun/verify-password/${props.id}`,
-        { oldPassword: passwordLama }
-      );
+        { oldPassword: passwordLama }, {
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
+        });
 
       toast.success(response.data.message);
       setModalShowBaru(true); 

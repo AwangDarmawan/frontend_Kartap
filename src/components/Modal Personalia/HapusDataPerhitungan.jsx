@@ -7,8 +7,9 @@ import { toast } from "react-toastify";
 
 const HapusDataPerhitungan = ({id, onHide, fetchPerhitungan, ...props}) => {
   const handleDelete = async () => {
+    const token = localStorage.getItem('authToken');
     try {
-      await deleteperhitungan(id);
+      await deleteperhitungan(id,token);
       fetchPerhitungan(); 
       onHide(); 
       toast.success("Perhitungan removed successfully");

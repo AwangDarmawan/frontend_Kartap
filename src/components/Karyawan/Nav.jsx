@@ -24,13 +24,14 @@ const Nav = () => {
 
   const buttonText = getButtonText();
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("KaryawanToken");
     localStorage.removeItem("karyawanID");
     localStorage.removeItem("namaKaryawan");
     localStorage.removeItem("nipKaryawan");
     localStorage.removeItem("posisiKaryawan");
     localStorage.removeItem("genderKaryawan");
     localStorage.removeItem("statusKaryawan");
+    localStorage.removeItem("karyawanUsername");
 
     window.location.href = "/";
   };

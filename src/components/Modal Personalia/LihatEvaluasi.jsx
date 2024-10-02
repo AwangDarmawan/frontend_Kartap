@@ -15,9 +15,10 @@ const LihatEvaluasi = (props) => {
   });
 
   useEffect(() => {
+    const token = localStorage.getItem('authToken');
     if (props.id) {
       console.log("Evaluasi for ID:", props.id);
-        getallEvaluasiById(props.id)
+        getallEvaluasiById(props.id,token)
         .then(data => {
           if (data.status === "OK") {
             setEvaluasi(data.data);

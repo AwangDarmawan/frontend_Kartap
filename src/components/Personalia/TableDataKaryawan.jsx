@@ -17,6 +17,7 @@ const TableDataKaryawan = () => {
 
   
   const fetchData = async () => {
+   
     try {
       const data = await getKaryawan();
       setDataKaryawan(data);

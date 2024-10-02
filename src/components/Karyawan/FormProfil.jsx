@@ -3,8 +3,7 @@
 import "../../styles/Karyawan/FormProfil.css";
 
 
-const FormProfil = () => {
-  // const karyawanID = localStorage.getItem('karyawanID');
+const FormProfil = () => {  
   const namaKaryawan = localStorage.getItem('namaKaryawan');
   const nipKaryawan = localStorage.getItem('nipKaryawan');
   const genderKaryawan = localStorage.getItem('genderKaryawan') === 'true'; 

@@ -16,8 +16,9 @@ const UbahKriteria1 = (props) => {
   });
 
   useEffect(() => {
+    const token = localStorage.getItem('authToken');
     if (props.id) {
-      fetchKriteriaById(props.id)
+      fetchKriteriaById(props.id, token)
         .then(data => {
           if (data.status === "OK") {
             setKriteria(data.data);
@@ -39,7 +40,8 @@ const UbahKriteria1 = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateKriteria(kriteria.id, kriteria)
+    const token = localStorage.getItem('authToken');
+    updateKriteria(kriteria.id, kriteria, token)
       .then(response => {
         if (response.status === "OK") {
           toast.success(response.message);

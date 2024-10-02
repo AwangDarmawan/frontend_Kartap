@@ -44,7 +44,6 @@ const TablePerankingan = () => {
           <table className="table mt-3">
             <thead className="table-primary">
               <tr className="header-table">
-                <th scope="col">ID</th>
                 <th scope="col">NIP</th>
                 <th scope="col">Nama Karyawan</th>
                 <th scope="col">Nilai</th>
@@ -57,7 +56,6 @@ const TablePerankingan = () => {
                 const { nama, nip } = getKaryawanDetails(item.karyawan); // Ambil nama dan NIP karyawan
                 return (
                   <tr key={item.id}>
-                    <th scope="row" className="text-kode">{item.id}</th>
                     <td className="text-kategori">{nip}</td>
                     <td className="text-kategori">{nama}</td>
                     <td className="text-nama">{item.nilai_perangkingan}</td>
@@ -65,8 +63,9 @@ const TablePerankingan = () => {
                       {item.keputusan_diangkat ? "Diangkat" : "Tidak"}
                     </td>
                     <td className={`text-kategori ${item.validasi_manager ? 'text-primary' : 'text-danger'}`}>
-                        {item.validasi_manager ? "Disetujui" : "Ditolak"}
+                        {item.validasi_manager ? "Disetujui" : "Tidak"}
                       </td>
+                      
                   </tr>
                 );
               })}

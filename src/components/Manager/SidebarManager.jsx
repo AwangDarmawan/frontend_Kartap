@@ -22,7 +22,7 @@ const SidebarManager = () => {
           <FaSignOutAlt className="item-icon" />
           <p className="item"
             onClick={() => {
-              localStorage.removeItem("token");
+              localStorage.removeItem("managerToken");
               window.location.href = "/manager";
             }}>Keluar</p>
         </Link>

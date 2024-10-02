@@ -1,8 +1,11 @@
 
 
+
+
+
 import "../../styles/Personalia/TableDataKaryawan.css";
 import { useState, useEffect } from "react";
-import { getperangkingan, getKaryawan, getPerhitungan, getallKriteria,getallSubKriteria } from "../../services/apipersonalia";
+import { getperangkingan, getKaryawan, getPerhitungan, getallKriteria, getallSubKriteria, getallEvaluasi } from "../../services/apipersonalia";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -12,6 +15,8 @@ const TableKaryawan = () => {
   const [dataPerhitungan, setDataPerhitungan] = useState([]);
   const [dataKriteriall, setKriteriall] = useState([]);
   const [dataSubKriteriall, setSubKriteriall] = useState([]);
+  const [dataEvaluasiall, setEvaluasiall] = useState([]);
+
   // Fetch data karyawan, perangkingan, dan perhitungan
   const LihatKaryawan = async () => {
     try {
@@ -27,6 +32,9 @@ const TableKaryawan = () => {
 
       const SubKriteriaData = await getallSubKriteria();
       setSubKriteriall(SubKriteriaData); 
+
+      const Evaluasiall = await getallEvaluasi();
+      setEvaluasiall(Evaluasiall.Data); 
 
       const perhitunganData = await getPerhitungan();
       setDataPerhitungan(perhitunganData.data);
@@ -47,11 +55,12 @@ const TableKaryawan = () => {
     
     const perhitunganWithKriteria = perhitungan.map(p => {
       const kriteria = dataKriteriall.find(k => k.id === p.kriteria); 
-      const subkriteria = dataSubKriteriall.find(k => k.id === p.subkriteria); 
+      const subkriteria = dataSubKriteriall.find(s => s.id === p.hasil_evaluasi_faktor); // Dapatkan subkriteria
       return {
         kriteria: kriteria ? kriteria.nama_kriteria : "Kriteria tidak ditemukan",
-        subkriteria:subkriteria ? subkriteria.nama_subkriteria : "SubKriteria tidak ditemukan",
-        hasil_perhitungan: p.hasil_perhitungan
+        subkriteria: subkriteria ? subkriteria.nama_subkriteria : "Subkriteria tidak ditemukan", // 
+        hasil_perhitungan: p.hasil_perhitungan,
+       
       };
     });
     
@@ -114,34 +123,28 @@ const TableKaryawan = () => {
             <table className="table mt-3">
               <thead className="table-primary">
                 <tr className="header-table">
-                  {/* <th scope="col">ID</th> */}
                   <th scope="col">NIP</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Kriteria</th>
                   <th scope="col">Nilai</th>
-                  <th scope="col">Keterangan</th>
                 </tr>
               </thead>
               <tbody className="isi-table">
                 {lihatHasil.map((item) => {
-                  const { nama, nip, perhitungan } = getKaryawanDetails(item.karyawan, item.kriteria, item.subkriteria,); // Ambil nama, NIP, dan perhitungan karyawan
+                  const { nama, nip, perhitungan } = getKaryawanDetails(item.karyawan); // Ambil nama, NIP, dan perhitungan karyawan
                   return (
                     <tr key={item.id}>
-                      {/* <th scope="row" className="text-kode">{item.id}</th> */}
                       <td className="text-kategori">{nip}</td>
                       <td className="text-kategori">{nama}</td>
                       <td className="text-kategori">
                         {perhitungan.map((p, index) => (
                           <div key={index} className="d-flex">
-                             {p.kriteria} :
-                              {p.subkriteria}
+                            {p.kriteria} : {p.subkriteria}{/* Menampilkan hasil_evaluasi_faktor */}
                           </div>
                         ))}
                       </td>
+                    
                       <td className="text-nama">{item.nilai_perangkingan}</td>
-                      <td className={`text-kategori ${item.validasi_manager ? 'text-primary' : 'text-danger'}`}>
-                        {item.validasi_manager ? "Diangkat" : "Tidak"}
-                      </td>
                     </tr>
                   );
                 })}
@@ -155,5 +158,3 @@ const TableKaryawan = () => {
 };
 
 export default TableKaryawan;
-
-

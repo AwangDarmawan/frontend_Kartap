@@ -1,10 +1,9 @@
-
 // import { useState, useEffect } from "react";
 // import "../../styles/Personalia/TableDataKaryawan.css";
 // import addBtn from "../../assets/gala_add.svg";
 // import TambahDataPerhitungan from "../Modal Personalia/TambahDataPerhitungan";
 // import HapusDataPerhitungan from "../Modal Personalia/HapusDataPerhitungan";
-// import { getPerhitungan, getallKriteria, getallSubKriteria,getKaryawan, getallEvaluasi } from "../../services/apipersonalia";
+// import { getPerhitungan, getallKriteria, getallSubKriteria,getKaryawan } from "../../services/apipersonalia";
 
 // const TablePerhitungan = () => {
 //   const [modalShowTambah, setModalShowTambah] = useState(false);
@@ -12,38 +11,50 @@
 //   const [perhitungan, setPerhitungan] = useState([]);
 //   const [kriteria, setKriteria] = useState([]);
 //   const [subkriteria, setSubkriteria] = useState([]);
-//   const [evaluasi, setEvaluasi] = useState([])
 //   const [karyawan, setKaryawan] = useState([]);
 //   const [PerhitunganId, setPerhitunganId] = useState(null);
 
 //   const fetchPerhitungan = async () => {
 //     try {
-//       const hitung = await getPerhitungan();
-//       setPerhitungan(hitung.data);
-    
+//       const result = await getPerhitungan();
+//       setPerhitungan(result.data);
+//     } catch (error) {
+//       console.error("Error fetching perhitungan:", error);
+//     }
+//   };
 
-  
-//       const kry = await getKaryawan();
-//       setKaryawan(kry);
-    
+//   const fetchkaryawan = async () => {
+//     try {
+//       const result = await getKaryawan();
+//       setKaryawan(result);
+//     } catch (error) {
+//       console.error("Error fetching perhitungan:", error);
+//     }
+//   };
 
- 
-//       const krt = await getallKriteria();
-//       setKriteria(krt.data);
-    
+//   const fetchKriteria = async () => {
+//     try {
+//       const result = await getallKriteria();
+//       setKriteria(result.data);
+//     } catch (error) {
+//       console.error("Error fetching kriteria:", error);
+//     }
+//   };
 
-  
-//       const sub= await getallSubKriteria();
-//       setSubkriteria(sub);
-    
-//       const ev = await getallEvaluasi();
-//       setEvaluasi(ev.data);
+//   const fetchSubkriteria = async () => {
+//     try {
+//       const result = await getallSubKriteria();
+//       setSubkriteria(result);
 //     } catch (error) {
 //       console.error("Error fetching subkriteria:", error);
 //     }
 //   };
+
 //   useEffect(() => {
 //     fetchPerhitungan();
+//     fetchkaryawan();
+//     fetchKriteria();
+//     fetchSubkriteria();
 //   }, []);
 
 //   const getKriteriaName = (id) => {
@@ -106,7 +117,7 @@
 //                   <td className="text-kategori">{getKaryawanNIP(item.karyawan)}</td>
 //                   <td className="text-kategori">{getKaryawanName(item.karyawan)}</td>
 //                   <td className="text-nama">{getKriteriaName(item.kriteria)}</td>
-//                   <td className="text-nama">{getSubKriteriaName(item.hasil_evaluasi_faktor)}</td>
+//                   <td className="text-nama">{getSubKriteriaName(item.subkriteria)}</td>
 //                   <td className="text-nama">{item.hasil_perhitungan}</td>
 //                   <td className="aksi-btn">
 //                     <div className="btn-wrapper d-flex gap-2">

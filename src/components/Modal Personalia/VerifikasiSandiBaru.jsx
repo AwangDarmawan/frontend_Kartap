@@ -12,7 +12,7 @@ const VerifikasiSandiBaru = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const token = localStorage.getItem('authToken'); 
     if (passwordBaru !== confPassword) {
       toast.error("Password baru dan konfirmasi password tidak cocok");
       return;
@@ -24,6 +24,11 @@ const VerifikasiSandiBaru = (props) => {
         {
           newPassword: passwordBaru,
           confirmNewPassword: confPassword
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
         }
       );
 

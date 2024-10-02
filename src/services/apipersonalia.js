@@ -10,6 +10,8 @@ export const AuthPersonalia = async (username, password) => {
     const response = await axios.post(`${baseUrl}/login`, { username, password });
     console.log('Login response:', response.data);
     if (response.data.status === "OK" && response.data.data.user.role === 'personalia') {
+      const token = response.data.data.token; // Ambil token dari response
+      localStorage.setItem('authToken', token);
       toast.success(response.data.message);
       return response.data;
     } else {
@@ -28,17 +30,27 @@ export const AuthPersonalia = async (username, password) => {
   // get all kriteria
   export const getallKriteria = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/kriteria`);
+      const token = localStorage.getItem('authToken'); 
+      const response = await axios.get(`${baseUrl}/kriteria`, {
+        headers: {
+          Authorization: `Bearer ${token}` 
+        }
+      });
       return response.data;
     } catch (error) {
       console.error("Error fetching kriteria:", error);
       throw error;
     }
   };
+
   // Tambah kriteria
-  export const addKriteria = async (kriteriaData) => {
+  export const addKriteria = async (kriteriaData,token) => {
     try {
-      const response = await axios.post(`${baseUrl}/kriteria`, kriteriaData);
+      const response = await axios.post(`${baseUrl}/kriteria`, kriteriaData, {
+        headers: {
+          Authorization: `Bearer ${token}` 
+        }
+      });
       return response.data;
     } catch (error) {
       console.error("Error adding kriteria:", error);
@@ -46,9 +58,13 @@ export const AuthPersonalia = async (username, password) => {
     }
   };
   // Fetch kriteria by ID
-export const fetchKriteriaById = async (id) => {
+export const fetchKriteriaById = async (id, token) => {
   try {
-    const response = await axios.get(`${baseUrl}/kriteria/${id}`);
+    const response = await axios.get(`${baseUrl}/kriteria/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching kriteria:", error);
@@ -58,9 +74,13 @@ export const fetchKriteriaById = async (id) => {
 
 
 // Update kriteria by ID
-export const updateKriteria = async (id, kriteriaData) => {
+export const updateKriteria = async (id, kriteriaData,token) => {
   try {
-    const response = await axios.put(`${baseUrl}/kriteria/${id}`, kriteriaData);
+    const response = await axios.put(`${baseUrl}/kriteria/${id}`, kriteriaData, {
+      headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  });
     return response.data;
   } catch (error) {
     console.error("Error updating kriteria:", error);
@@ -69,9 +89,13 @@ export const updateKriteria = async (id, kriteriaData) => {
 };
 
 //delete kriteria 
-export const deleteKriteria = async (id) => {
+export const deleteKriteria = async (id,token) => {
   try {
-    const response = await axios.delete(`${baseUrl}/kriteria/${id}`);
+    const response = await axios.delete(`${baseUrl}/kriteria/${id}`, {
+      headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  });
     return response.data;
   } catch (error) {
     throw error;
@@ -85,7 +109,13 @@ export const deleteKriteria = async (id) => {
  // get all Subkriteri
  export const getallSubKriteria = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/subkriteria`);
+    const token = localStorage.getItem('authToken'); 
+    const response = await axios.get(`${baseUrl}/subkriteria`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
+    console.log("responses",response.data.data.data)
     return response.data.data.data;
   } catch (error) {
     console.error("Error fetching subkriteria:", error);
@@ -93,10 +123,13 @@ export const deleteKriteria = async (id) => {
   }
 };
 // Fetch kriteria by ID
-export const fetchSubKriteriaById = async (id) => {
+export const fetchSubKriteriaById = async (id, token) => {
   try {
-    const response = await axios.get(`${baseUrl}/subkriteria/${id}`);
-    console.log(response.data)
+    const response = await axios.get(`${baseUrl}/subkriteria/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching kriteria:", error);
@@ -105,9 +138,13 @@ export const fetchSubKriteriaById = async (id) => {
 };
 
 //Update SubKriteria
-export const updateSubKriteria = async (id, subkriteriaData) => {
+export const updateSubKriteria = async (id, subkriteriaData,token) => {
   try {
-    const response = await axios.put(`${baseUrl}/subkriteria/${id}`, subkriteriaData);
+    const response = await axios.put(`${baseUrl}/subkriteria/${id}`, subkriteriaData , {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error updating kriteria:", error);
@@ -115,9 +152,13 @@ export const updateSubKriteria = async (id, subkriteriaData) => {
   }
 };
 //Tambah SubKriteria
-export const addSubKriteria = async (subkriteriaData) => {
+export const addSubKriteria = async (subkriteriaData,token) => {
   try {
-    const response = await axios.post(`${baseUrl}/subkriteria`, subkriteriaData);
+    const response = await axios.post(`${baseUrl}/subkriteria`, subkriteriaData, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding subkriteria:", error);
@@ -126,9 +167,13 @@ export const addSubKriteria = async (subkriteriaData) => {
 };
 
 //delete Subkriteria 
-export const deleteSubKriteria = async (id) => {
+export const deleteSubKriteria = async (id, token) => {
   try {
-    const response = await axios.delete(`${baseUrl}/subkriteria/${id}`);
+    const response = await axios.delete(`${baseUrl}/subkriteria/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     throw error;
@@ -141,7 +186,12 @@ export const deleteSubKriteria = async (id) => {
 // tampilkan karyawan
 export const getKaryawan = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/karyawan`);
+    const token = localStorage.getItem('authToken'); 
+    const response = await axios.get(`${baseUrl}/karyawan`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     console.log(response.data); 
     if (response.data.status === "OK") {
       return response.data.data;
@@ -155,8 +205,13 @@ export const getKaryawan = async () => {
 };
 // tampilkan karyawan berdasarkan ID 
 export const fetchKaryawanById = async (id) => {
+  const token = localStorage.getItem('authToken'); 
   try {
-    const response = await axios.get(`${baseUrl}/karyawan/${id}`);
+    const response = await axios.get(`${baseUrl}/karyawan/${id}`,{
+      headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  });
     return response.data;
   } catch (error) {
     console.error("Error fetching kriteria:", error);
@@ -166,8 +221,13 @@ export const fetchKaryawanById = async (id) => {
 
 //update karyawan
 export const updateKaryawan = async (id, dataKaryawan) => {
+  const token = localStorage.getItem('authToken'); 
   try {
-    const response = await axios.put(`${baseUrl}/karyawan/${id}`, dataKaryawan);
+    const response = await axios.put(`${baseUrl}/karyawan/${id}`, dataKaryawan,{
+      headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  });
     return response.data;
   } catch (error) {
     console.error("Error updating kriteria:", error);
@@ -175,10 +235,13 @@ export const updateKaryawan = async (id, dataKaryawan) => {
   }
 };
 //addd karyawan
-export const addKaryawan = async (dataKaryawan) => {
+export const addKaryawan = async (dataKaryawan,token) => {
   try {
-    const response = await axios.post(`${baseUrl}/karyawan`,dataKaryawan);
-    console.log("error add",response.data)
+    const response = await axios.post(`${baseUrl}/karyawan`, dataKaryawan, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding add karyawan:", error);
@@ -187,9 +250,14 @@ export const addKaryawan = async (dataKaryawan) => {
 };
 
 //Hapus Karyawan
-export const deleteKaryawan = async (id) => {
+export const deleteKaryawan = async (id,token) => {
   try {
-    const response = await axios.delete(`${baseUrl}/akun/${id}`);
+    const response = await axios.delete(`${baseUrl}/akun/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
+    console.log("delte", response.data)
     return response.data;
   } catch (error) {
     throw error;
@@ -203,7 +271,12 @@ export const deleteKaryawan = async (id) => {
 // tampilkan AKun
 export const getallAkun = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/akun`);
+    const token = localStorage.getItem('authToken');
+    const response = await axios.get(`${baseUrl}/akun`,{
+       headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  });
     console.log(response.data); 
     if (response.data.status === "OK") {
       return response.data.data;
@@ -221,7 +294,12 @@ export const getallAkun = async () => {
 /* ============ */
 export const getallEvaluasi  = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/evaluasi-faktor`);
+    const token = localStorage.getItem('authToken'); 
+    const response = await axios.get(`${baseUrl}/evaluasi-faktor`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching Evaluasi-faktor :", error);
@@ -229,9 +307,13 @@ export const getallEvaluasi  = async () => {
   }
 };
 
-export const getallEvaluasiById  = async (id) => {
+export const getallEvaluasiById  = async (id,token) => {
   try {
-    const response = await axios.get(`${baseUrl}/evaluasi-faktor/${id}`);
+    const response = await axios.get(`${baseUrl}/evaluasi-faktor/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching Evaluasi-faktor :", error);
@@ -243,8 +325,13 @@ export const getallEvaluasiById  = async (id) => {
 /* === perangkingan === */
 /* ============ */
 export const getperangkingan  = async () => {
+  const token = localStorage.getItem('authToken');
   try {
-    const response = await axios.get(`${baseUrl}/perankingan`);
+    const response = await axios.get(`${baseUrl}/perankingan`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching perangkingan :", error);
@@ -253,9 +340,13 @@ export const getperangkingan  = async () => {
 };
 
 //Hapus Karyawan
-export const deleteperangkingan = async (id) => {
+export const deleteperangkingan = async (id,token) => {
   try {
-    const response = await axios.delete(`${baseUrl}/perankingan/${id}`);
+    const response = await axios.delete(`${baseUrl}/perankingan/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     console.log("hapus", response.data)
     return response.data;
   } catch (error) {
@@ -268,8 +359,13 @@ export const deleteperangkingan = async (id) => {
 /* === Perhitungan === */
 /* ============ */
 export const getPerhitungan  = async () => {
+  const token = localStorage.getItem('authToken');
   try {
-    const response = await axios.get(`${baseUrl}/perhitungan`);
+    const response = await axios.get(`${baseUrl}/perhitungan`,{
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching Evaluasi-faktor :", error);
@@ -278,9 +374,13 @@ export const getPerhitungan  = async () => {
 };
 
 //Tambah ADDperhitungan
-export const addperhitungan = async (PerhitunganData) => {
+export const addperhitungan = async (perhitungan,token) => {
   try {
-    const response = await axios.post(`${baseUrl}/perhitungan`, PerhitunganData);
+    const response = await axios.post(`${baseUrl}/perhitungan`, perhitungan,{
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding subkriteria:", error);
@@ -289,9 +389,13 @@ export const addperhitungan = async (PerhitunganData) => {
 };
 
 //delete perhitungan
-export const deleteperhitungan = async (id) => {
+export const deleteperhitungan = async (id,token) => {
   try {
-    const response = await axios.delete(`${baseUrl}/perhitungan/${id}`);
+    const response = await axios.delete(`${baseUrl}/perhitungan/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    });
     return response.data;
   } catch (error) {
     throw error;

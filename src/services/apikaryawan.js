@@ -11,6 +11,8 @@ export const AuthKaryawan = async (username, password) => {
     console.log('Login response:', response.data);
     if (response.data.status === "OK" && response.data.data.user.role === 'karyawan') {
       toast.success(response.data.message);
+      const token = response.data.data.token; // Ambil token dari response
+      localStorage.setItem('KaryawanToken', token);
       return response.data; 
     } else {
       toast.error('Unauthorized: Access denied');
@@ -22,19 +24,6 @@ export const AuthKaryawan = async (username, password) => {
   }
 };
 
-
-// // tampilkan karyawan berdasarkan ID 
-// export const fetchKaryawanById = async (id) => {
-//   try {
-//     const response = await axios.get(`${baseUrl}/karyawan/${id}`);
-//     toast.success(response.data.message);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error fetching kriteria:", error);
-//     toast.error(error.response.data.message);
-//     throw error;
-//   }
-// };
 
 
 
