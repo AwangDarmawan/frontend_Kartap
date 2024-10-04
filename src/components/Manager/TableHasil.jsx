@@ -150,7 +150,6 @@ const TableHasil = () => {
       <Disetujui
         show={modaldisetujui}
         id={DataDiangkatBYID}
-        
         onHide={handleUbahClose} 
       />
       

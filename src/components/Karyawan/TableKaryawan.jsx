@@ -127,6 +127,7 @@ const TableKaryawan = () => {
                   <th scope="col">Nama</th>
                   <th scope="col">Kriteria</th>
                   <th scope="col">Nilai</th>
+                  <th scope="col">Hasil</th>
                 </tr>
               </thead>
               <tbody className="isi-table">
@@ -145,6 +146,9 @@ const TableKaryawan = () => {
                       </td>
                     
                       <td className="text-nama">{item.nilai_perangkingan}</td>
+                      <td className={`text-kategori ${item.validasi_manager ? 'text-primary' : 'text-danger'}`}>
+                        {item.validasi_manager ? "Disetujui" : "Tidak"}
+                      </td>
                     </tr>
                   );
                 })}

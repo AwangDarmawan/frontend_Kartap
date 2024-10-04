@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebookF, FaLinkedinIn, FaGoogle, FaMapMarkerAlt} from 'react-icons/fa';
 import "../../styles/Homes/Team.css"
-import team1 from "../../assets/homes/hari1.jpg";
-import team2 from "../../assets/homes/siti.jpg";
+// import team1 from "../../assets/homes/hari1.jpg";
+// import team2 from "../../assets/homes/siti.jpg";
 const Team = () => {
   return (
     <section id="team" className="team ">
@@ -15,7 +15,7 @@ const Team = () => {
           <Col lg={4} md={6} className="d-flex align-items-stretch">
             <div className="member" data-aos="zoom-in">
               <div className="member-img">
-                <img src={team1} className="img-fluid member-iamg " alt="Walter White" />
+                {/* <img src={team1} className="img-fluid member-iamg " alt="Walter White" /> */}
                 <div className="social">
                 <a href="https://wwpc.eu.com/member/pt-indonesia-project-logistics/" className='sociala' target="_blank" rel="noopener noreferrer"><FaGoogle /></a>
                   <a href="https://www.facebook.com/thewwpcnetwork/" className='sociala'><FaFacebookF /></a>
@@ -34,7 +34,7 @@ const Team = () => {
           <Col lg={4} md={6} className="d-flex align-items-stretch">
             <div className="member" data-aos="zoom-in" data-aos-delay="100">
               <div className="member-img">
-                <img src={team2} className="img-fluid member-iamg " alt="Sarah Jhonson" />
+                {/* <img src={team2} className="img-fluid member-iamg " alt="Sarah Jhonson" /> */}
                 <div className="social">
                 <a href="#" className='sociala'><FaGoogle /></a>
                   <a href="#" className='sociala'><FaFacebookF /></a>

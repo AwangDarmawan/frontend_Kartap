@@ -65,7 +65,6 @@ const TablePerankingan = () => {
                     <td className={`text-kategori ${item.validasi_manager ? 'text-primary' : 'text-danger'}`}>
                         {item.validasi_manager ? "Disetujui" : "Tidak"}
                       </td>
-                      
                   </tr>
                 );
               })}

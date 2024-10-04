@@ -1,6 +1,3 @@
-
-
-
 import { useState, useEffect } from "react";
 import "../../styles/Personalia/TableDataKaryawan.css";
 import addBtn from "../../assets/gala_add.svg";

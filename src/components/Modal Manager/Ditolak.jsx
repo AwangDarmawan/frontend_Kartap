@@ -82,8 +82,6 @@ const Ditolak = (props) => {
               className="form-modal-admin"
               value={disetujui.validasi_manager ? "disetujui" : "ditolak"}
               onChange={handleChange}
-             
-              
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="keterangan">
